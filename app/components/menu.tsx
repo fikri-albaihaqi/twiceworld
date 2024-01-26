@@ -1,8 +1,10 @@
 'use client'
 
 import Image from "next/image"
-import { josefin } from "@/app/assets/fonts"
+import { dmSerif, josefin } from "@/app/assets/fonts"
 import { useState } from "react"
+import Link from "next/link";
+import styles from './Menu.module.css'
 
 export default function Menu() {
   const [show, setShow] = useState(false);
@@ -13,26 +15,26 @@ export default function Menu() {
 
   return (
     <>
-      <nav className="flex justify-between p-8 absolute w-screen">
+      <nav className="flex justify-between py-8 px-16 absolute w-screen">
         <Image src="/next.svg" width={128} height={128} alt="Twiceland logo" />
         <div className="flex">
           <ul className="flex mx-8">
-            <li className="px-2">
+            <a href="" className="mx-2">
               <Image src="/Youtube.svg" width={24} height={24} alt="Youtube logo" />
-            </li>
-            <li className="px-2">
+            </a>
+            <a href="" className="mx-2">
               <Image src="/Instagram.svg" width={24} height={24} alt="Instagram logo" />
-            </li>
-            <li className="px-2">
+            </a>
+            <a href="" className="mx-2">
               <Image src="/Twitter.svg" width={24} height={24} alt="Twitter logo" />
-            </li>
-            <li className="px-2">
+            </a>
+            <a href="" className="mx-2">
               <Image src="/Facebook.svg" width={24} height={24} alt="Facebook logo" />
-            </li>
+            </a>
           </ul>
           <div 
             onClick={toggleShow}
-            className="relative z-20 group stroke-white cursor-pointer"
+            className={`${show ? 'fixed right-8 top-10' : 'relative'} z-20 group stroke-white cursor-pointer`}
           >
             <a href="#"
               className={`w-[48px] h-[24px] bg-none relative inline-flex text-white 
@@ -46,7 +48,7 @@ export default function Menu() {
         </div>
       </nav>
       <div 
-        className="hidden absolute flex items-center z-10 w-screen h-screen 
+        className="hidden fixed overflow-y-hidden items-center z-10 w-screen h-screen 
         bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-pink-300 bg-amber-100 to-rose-200"
         style={{
           display: show ? 'flex' : 'none'
@@ -56,26 +58,34 @@ export default function Menu() {
         <div className="flex flex-col ml-16">
           <Image className="absolute top-8" src="/next.svg" width={128} height={128} alt="Twiceland logo" />
 
-          <ul className={`text-6xl text-alternate-black font-semibold ${josefin.className}`}>
-            <li className="py-4">Home</li>
-            <li className="py-4">Members</li>
-            <li className="py-4">History</li>
-            <li className="py-4">Discography</li>
+          <ul className={`text-6xl text-alternate-black font-semibold`}>
+            <li className={`my-4 ${styles.menuItem}`}>
+              <Link href="">Home</Link>
+            </li>
+            <li className={`my-4 ${styles.menuItem}`}>
+              <Link href="">Members</Link>
+            </li>
+            <li className={`my-4 ${styles.menuItem}`}>
+              <Link href="">History</Link>
+            </li>
+            <li className={`my-4 ${styles.menuItem}`}>
+              <Link href="">Discography</Link>
+            </li>
           </ul>
 
           <ul className="flex absolute bottom-8">
-            <li className="px-2">
+            <a href="" className="mx-2">
               <Image src="/Youtube.svg" width={24} height={24} alt="Youtube logo" />
-            </li>
-            <li className="px-2">
+            </a>
+            <a href="" className="mx-2">
               <Image src="/Instagram.svg" width={24} height={24} alt="Instagram logo" />
-            </li>
-            <li className="px-2">
+            </a>
+            <a href="" className="mx-2">
               <Image src="/Twitter.svg" width={24} height={24} alt="Twitter logo" />
-            </li>
-            <li className="px-2">
+            </a>
+            <a href="" className="mx-2">
               <Image src="/Facebook.svg" width={24} height={24} alt="Facebook logo" />
-            </li>
+            </a>
           </ul>
         </div>
       </div>

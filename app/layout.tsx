@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Menu from './components/menu'
-
-const inter = Inter({ subsets: ['latin'] })
+import { josefin, dmSerif } from './assets/fonts'
 
 export const metadata: Metadata = {
   title: 'Twiceland',
@@ -16,10 +14,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${josefin.variable} ${dmSerif.variable}`}>
       <body
-        className="bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-amber-100 
-        to-pink-300"
+        className="bg-fixed text-alternate-black bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] 
+        from-amber-100 to-pink-300 overflow-x-hidden"
       >
         <Menu />
         {children}

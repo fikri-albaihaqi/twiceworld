@@ -17,6 +17,14 @@ const config: Config = {
         'primary-black': '#1B1816',
         'alternate-black': '#3D3C3A',
         'primary-orange': '#EB8038',
+        'heart-red': '#882B11',
+        'cream': '#D1CAA7'
+      },
+      fontFamily: {
+        bungee: ['var(--font-bungee)'],
+        josefin: ['var(--font-josefin)'],
+        dmSerif: ['var(--font-dm-serif)'],
+        permanentMarker: ['var(--font-permanent-marker)'],
       },
     },
   },

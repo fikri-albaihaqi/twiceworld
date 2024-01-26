@@ -1,0 +1,9 @@
+.menuItem {
+  font-family: var(--font-josefin);
+  transition: all 0.3s;
+}
+
+.menuItem:hover {
+  transform: skew(-15deg);
+  font-weight: bold;
+}
