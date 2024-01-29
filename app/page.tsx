@@ -171,8 +171,6 @@ export default function Home() {
           See All TWICE Discography
         </Link>
       </section>
-
-      <Footer />
     </main>
   )
 }

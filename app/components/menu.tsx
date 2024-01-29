@@ -15,7 +15,7 @@ export default function Menu() {
 
   return (
     <>
-      <nav className="flex justify-between py-8 px-16 absolute w-screen">
+      <nav className="flex justify-between py-8 px-16 absolute w-screen top-0">
         <Image src="/next.svg" width={128} height={128} alt="Twiceland logo" />
         <div className="flex">
           <ul className="flex mx-8">
@@ -49,7 +49,7 @@ export default function Menu() {
       </nav>
       <div 
         className="hidden fixed overflow-y-hidden items-center z-10 w-screen h-screen 
-        bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-pink-300 bg-amber-100 to-rose-200"
+        bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-pink-300 bg-amber-100 to-rose-200 top-0"
         style={{
           display: show ? 'flex' : 'none'
         }}
@@ -60,13 +60,13 @@ export default function Menu() {
 
           <ul className={`text-6xl text-alternate-black font-semibold`}>
             <li className={`my-4 ${styles.menuItem}`}>
-              <Link href="">Home</Link>
+              <Link href="/">Home</Link>
+            </li>
+            <li className={`my-4 ${styles.menuItem}`}>
+              <Link href="/history">History</Link>
             </li>
             <li className={`my-4 ${styles.menuItem}`}>
               <Link href="">Members</Link>
-            </li>
-            <li className={`my-4 ${styles.menuItem}`}>
-              <Link href="">History</Link>
             </li>
             <li className={`my-4 ${styles.menuItem}`}>
               <Link href="">Discography</Link>
