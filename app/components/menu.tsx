@@ -1,7 +1,6 @@
 'use client'
 
 import Image from "next/image"
-import { dmSerif, josefin } from "@/app/assets/fonts"
 import { useState } from "react"
 import Link from "next/link";
 import styles from './Menu.module.css'
@@ -36,14 +35,14 @@ export default function Menu() {
             onClick={toggleShow}
             className={`${show ? 'fixed right-8 top-10' : 'relative'} z-20 group stroke-white cursor-pointer`}
           >
-            <a href="#"
+            <span
               className={`w-[48px] h-[24px] bg-none relative inline-flex text-white 
                 before:content-[''] before:w-full before:h-[2px] before:absolute before:bg-alternate-black
                 after:content-[''] after:right-0 after:h-[2px] after:absolute 
                 after:bg-alternate-black group-hover:after:w-full after:transition-all
                 ${show ? 'before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full' 
                 : 'before:rotate-0 after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
-            ></a>
+            ></span>
           </div>
         </div>
       </nav>
