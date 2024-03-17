@@ -1,4 +1,4 @@
-import { permanentMarker } from "@/app/assets/fonts"
+import { gloriaHallelujah } from "@/app/assets/fonts"
 
 export default function Polaroid({
   img,
@@ -20,7 +20,7 @@ export default function Polaroid({
         className="h-[88px] flex flex-col justify-center items-center font-shadow font-bold text-center text-4xl 
           text-primary-black"
       >
-        <h1 className={permanentMarker.className}>
+        <h1 className={gloriaHallelujah.className}>
           {name}
         </h1>
       </div>

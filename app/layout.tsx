@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Menu from './components/menu'
-import { josefin, dmSerif } from './assets/fonts'
+import { poppins } from './assets/fonts'
 import Footer from './components/footer'
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${josefin.variable} ${dmSerif.variable}`}>
+    <html lang="en" className={`${poppins.className}`}>
       <body
         className="bg-fixed text-alternate-black bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] 
         from-amber-100 to-pink-300 overflow-x-hidden"

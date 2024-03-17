@@ -5,7 +5,7 @@ import Polaroid from "./components/polaroid"
 import Album from "./components/album"
 import Footer from "./components/footer"
 
-export default function Home() {
+export default function Page() {
   const members = [
     {
       id: 1,
