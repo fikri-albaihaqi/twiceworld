@@ -88,41 +88,41 @@ export default function Page() {
   ]
 
   return (
-    <main className="mx-16">
-      <header className="flex min-h-screen flex-col items-center justify-center">
-        <h1 className={`text-5xl text-primary-orange absolute -mr-3 -mt-3 text-center ${bungee.className}`}>
-          ONCE THROUGH THE EARS <br />
-          AND ONCE THROUGH THE EYES
-        </h1>
-        <h1 className={`text-5xl text-alternate-black text-center ${bungee.className}`}>
-          ONCE THROUGH THE EARS <br />
-          AND ONCE THROUGH THE EYES
-        </h1>
+    <main className="">
+      <header className="relative -z-10 h-[500px] md:h-[440px] lg:h-[900px]">
+        <Image src="/header.png" alt="Header Image with twice members in it" fill={true}
+          className="hidden md:block -z-10 object-contain object-top"
+        />
+        <Image src="/header-mobile.png" alt="Header Image with twice members in it" fill={true}
+          className="absolute md:hidden -z-10 object-contain object-top"
+        />
       </header>
       
-      <section className="flex justify-between items-center h-screen">
-        <div className="w-[45vw] h-[70vh] flex justify-center items-center bg-white -rotate-3 rounded-md">
-          <div className="w-[95%] h-[95%] bg-[url('/scientist.jpg')] bg-cover"></div>
+      <section className="flex items-center h-screen mx-16">
+        <div className="relative w-[45vw] h-[70vh] flex justify-center">
+          <Image src="/twice-group-1.png" alt="Twice Group Photo From 'I Got You' Set" fill={true}
+            className="object-contain"
+          />
         </div>
-        <div className="flex flex-col justify-center items-center w-[50vw] pl-8">
-          <div className="flex justify-center mb-4">
-            <h1 className={`text-4xl text-primary-orange absolute -mr-3 -mt-1 text-center ${bungee.className}`}>
+        <div className="w-[50vw] pl-8">
+          <div className="mb-4">
+            <h1 className={`text-4xl text-primary-orange absolute ml-1 -mt-1 ${bungee.className}`}>
               ABOUT TWICE
             </h1>
-            <h1 className={`text-4xl text-alternate-black text-center ${bungee.className}`}>
+            <h1 className={`text-4xl text-alternate-black ${bungee.className}`}>
               ABOUT TWICE
             </h1>
           </div>
-          <p>
+          <p className="mt-4 mb-4">
             TWICE is a K-Pop girl group produced by JYP Entertainment through the reality program [SIXTEEN]. 
             The group is composed of 9 members: NAYEON, JEONGYEON, MOMO, SANA, JIHYO, MINA, DAHYUN, CHAEYOUNG, and TZUYU. 
             Debuted on October 20th, 2015 with the 1st EP [THE STORY BEGINS] that featured the title track “Like OOH-AHH”.
           </p>
           <Link 
             href="/"
-            className="relative z-0 text-center mt-8 font-semibold no-underline
-              before:bg-primary-orange before:z-5 before:content-[''] before:w-full before:absolute before:bottom-[4px]
-              before:h-[4px] before:left-0 before:block before:transition-all before:-z-1 hover:before:h-[80%]"
+            className="absolute z-10 no-underline
+              before:bg-primary-orange before:content-[''] before:w-full before:absolute before:bottom-[3px]
+              before:h-[4px] before:left-0 before:block before:transition-all before:-z-10 hover:before:h-[80%]"
           >
             Read TWICE History
           </Link>

@@ -17,8 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.className}`}>
       <body
-        className="bg-fixed text-alternate-black bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] 
-        from-amber-100 to-pink-300 overflow-x-hidden"
+        className="bg-[url('/bg-1.png')] bg-cover bg-fixed overflow-x-hidden text-alternate-black"
       >
         <Menu />
         {children}
