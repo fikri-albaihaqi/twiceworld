@@ -1,6 +1,8 @@
 'use client'
 
 import Image from "next/image"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faInstagram, faTiktok, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { useState } from "react"
 import Link from "next/link";
 import styles from './Menu.module.css'
@@ -14,21 +16,24 @@ export default function Menu() {
 
   return (
     <>
-      <nav className="flex justify-between py-8 px-16 absolute w-screen top-0">
-        <Image src="/next.svg" width={128} height={128} alt="Twiceland logo" />
-        <div className="flex">
-          <ul className="flex mx-8">
+      <nav className="flex justify-between px-8 md:px-16 absolute w-screen top-0">
+        <Image src="/twice-logo.svg" width={64} height={64} alt="Twice logo" className="py-4" />
+        <div className="flex py-8">
+          <ul className="hidden md:flex mx-8">
             <a href="" className="mx-2">
-              <Image src="/Youtube.svg" width={24} height={24} alt="Youtube logo" />
+              <FontAwesomeIcon icon={faInstagram} size="lg" style={{color: "#3D3C3A"}} />
             </a>
             <a href="" className="mx-2">
-              <Image src="/Instagram.svg" width={24} height={24} alt="Instagram logo" />
+              <FontAwesomeIcon icon={faXTwitter} size="lg" style={{color: "#3D3C3A"}} />
             </a>
             <a href="" className="mx-2">
-              <Image src="/Twitter.svg" width={24} height={24} alt="Twitter logo" />
+              <FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#3D3C3A"}} />
             </a>
             <a href="" className="mx-2">
-              <Image src="/Facebook.svg" width={24} height={24} alt="Facebook logo" />
+              <FontAwesomeIcon icon={faYoutube} size="lg" style={{color: "#3D3C3A"}} />
+            </a>
+            <a href="" className="mx-2">
+              <FontAwesomeIcon icon={faTiktok} size="lg" style={{color: "#3D3C3A"}} />
             </a>
           </ul>
           <div 
@@ -55,7 +60,7 @@ export default function Menu() {
       >
         <div className="w-[65%] h-screen bg-[url('/the-feels.jpg')] bg-cover"></div>
         <div className="flex flex-col ml-16">
-          <Image className="absolute top-8" src="/next.svg" width={128} height={128} alt="Twiceland logo" />
+          <Image className="absolute top-4" src="/twice-logo.svg" width={64} height={64} alt="Twice logo" />
 
           <ul className={`text-6xl text-alternate-black font-semibold`}>
             <li className={`my-4 ${styles.menuItem}`}>
@@ -74,16 +79,19 @@ export default function Menu() {
 
           <ul className="flex absolute bottom-8">
             <a href="" className="mx-2">
-              <Image src="/Youtube.svg" width={24} height={24} alt="Youtube logo" />
+              <FontAwesomeIcon icon={faInstagram} size="lg" style={{color: "#3D3C3A"}} />
             </a>
             <a href="" className="mx-2">
-              <Image src="/Instagram.svg" width={24} height={24} alt="Instagram logo" />
+              <FontAwesomeIcon icon={faXTwitter} size="lg" style={{color: "#3D3C3A"}} />
             </a>
             <a href="" className="mx-2">
-              <Image src="/Twitter.svg" width={24} height={24} alt="Twitter logo" />
+              <FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#3D3C3A"}} />
             </a>
             <a href="" className="mx-2">
-              <Image src="/Facebook.svg" width={24} height={24} alt="Facebook logo" />
+              <FontAwesomeIcon icon={faYoutube} size="lg" style={{color: "#3D3C3A"}} />
+            </a>
+            <a href="" className="mx-2">
+              <FontAwesomeIcon icon={faTiktok} size="lg" style={{color: "#3D3C3A"}} />
             </a>
           </ul>
         </div>
