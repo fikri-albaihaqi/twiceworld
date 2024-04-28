@@ -1,59 +1,9 @@
 import { bungee } from "@/app/assets/fonts"
 import Link from "next/link"
 import Image from "next/image"
-import Polaroid from "./components/polaroid"
 import Album from "./components/album"
-import Footer from "./components/footer"
 
 export default function Page() {
-  const members = [
-    {
-      id: 1,
-      name: "Nayeon",
-      img: "/nayeon.jpg"
-    },
-    {
-      id: 2,
-      name: "Jeongyeon",
-      img: "/jeongyeon.jpg"
-    },
-    {
-      id: 3,
-      name: "Momo",
-      img: "/momo.jpg"
-    },
-    {
-      id: 4,
-      name: "Sana",
-      img: "/sana.jpg"
-    },
-    {
-      id: 5,
-      name: "Jihyo",
-      img: "/jihyo.jpg"
-    },
-    {
-      id: 6,
-      name: "Mina",
-      img: "/mina.jpg"
-    },
-    {
-      id: 7,
-      name: "Dahyun",
-      img: "/dahyun.jpg"
-    },
-    {
-      id: 8,
-      name: "Chaeyoung",
-      img: "/chaeyoung.jpg"
-    },
-    {
-      id: 9,
-      name: "Tzuyu",
-      img: "/tzuyu.jpg"
-    }
-  ]
-
   const albums = [
     {
       id: 1,
@@ -129,23 +79,21 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="relative flex flex-col justify-center min-h-screen mt-32">
+      <section className="relative flex flex-col justify-center items-center min-h-screen mt-32">
         <div className="flex w-full justify-center items-center">
-          <Image src="/title-bg.svg" alt="Background for Title Text" width={360} height={360}
-            className="absolute"
+          <Image src="/title-bg.svg" alt="Background for Title Text" width={0} height={0}
+            className="absolute w-[280px] md:w-[360px]"
           />
-          <h1 className={`absolute text-4xl text-alternate-black text-center ${bungee.className}`}>
+          <h1 className={`absolute text-2xl md:text-4xl text-alternate-black text-center ${bungee.className}`}>
             THE MEMBERS
           </h1>
-          <h1 className={`absolute text-4xl text-cream -mr-3 -mt-1 text-center ${bungee.className}`}>
+          <h1 className={`absolute text-2xl md:text-4xl text-cream -mr-3 -mt-1 text-center ${bungee.className}`}>
             THE MEMBERS
           </h1>
         </div> 
-        <div className="w-full grid grid-cols-3 justify-items-center mt-32">
-          {members?.map((member) => (
-            <Polaroid key={member.id} img={member.img} name={member.name} />  
-          ))}
-        </div>       
+        <Image src="/members-polaroid.svg" alt="Twice Members" width={1240} height={0}
+          className="mt-32"
+        />
       </section>
 
       <section className="w-full flex flex-col justify-center items-center mt-32">
