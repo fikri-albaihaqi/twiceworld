@@ -9,7 +9,7 @@ export default function Album({
   name: string;
 }) {
   return(
-    <Link href="/" className="my-6">
+    <Link href="/" className="my-4 mx-2">
       <Image src={img} alt={name} width={360} height={360} />
     </Link>
   )

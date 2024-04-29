@@ -96,25 +96,25 @@ export default function Page() {
         />
       </section>
 
-      <section className="w-full flex flex-col justify-center items-center mt-32">
+      <section className="relative w-full flex flex-col justify-between items-center pt-32 pb-16">
         <div className="flex justify-center mb-4">
-          <h1 className={`text-4xl text-primary-orange absolute -mr-3 -mt-1 text-center ${bungee.className}`}>
+          <h1 className={`text-3xl md:text-4xl text-primary-orange absolute -mr-2 md:-mr-3 -mt-1 text-center ${bungee.className}`}>
             DISCOGRAPHY
           </h1>
-          <h1 className={`text-4xl text-alternate-black text-center ${bungee.className}`}>
+          <h1 className={`text-3xl md:text-4xl text-alternate-black text-center ${bungee.className}`}>
             DISCOGRAPHY
           </h1>
         </div>
-        <div className="w-[80%] grid grid-cols-3 justify-items-center gap-0">
+        <div className="w-[80%] grid grid-cols-2 md:grid-cols-3 justify-items-center">
           {albums.map((album) => (
             <Album key={album.id} name={album.name} img={album.img} />
           ))}
         </div>
         <Link 
           href="/"
-          className="relative z-0 text-center mt-8 font-semibold no-underline
-            before:bg-primary-orange before:z-5 before:content-[''] before:w-full before:absolute before:bottom-[4px]
-            before:h-[4px] before:left-0 before:block before:transition-all before:-z-1 hover:before:h-[80%]"
+          className="absolute z-10 no-underline bottom-0 mt-16 font-semibold
+              before:bg-primary-orange before:content-[''] before:w-full before:absolute before:bottom-[3px]
+              before:h-[4px] before:left-0 before:block before:transition-all before:-z-10 hover:before:h-[80%]"
         >
           See All TWICE Discography
         </Link>
