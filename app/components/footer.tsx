@@ -12,7 +12,7 @@ export default function Footer() {
       
       <div className="flex">
         <ul className="flex flex-col justify-center mx-4 w-[100px] before:content-[''] before:absolute before:bg-white before:w-[2px] 
-          before:h-[140px]">
+          before:h-[150px]">
           <li className="ml-4 hover:text-alternate-black"><Link href="/">Home</Link></li>
           <li className="ml-4 hover:text-alternate-black"><Link href="/">History</Link></li>
           <li className="ml-4 hover:text-alternate-black"><Link href="/">Members</Link></li>
@@ -20,21 +20,21 @@ export default function Footer() {
         </ul>
       
         <ul className="relative flex flex-col justify-center items-center mx-4 w-[100px] before:content-[''] before:absolute before:bg-white before:w-[2px] 
-          before:h-[140px] before:left-0">
+          before:h-[150px] before:left-0">
           <a href="" className="my-0.5">
-            <FontAwesomeIcon icon={faInstagram} size="lg" style={{color: "#3D3C3A"}} />
+            <FontAwesomeIcon icon={faInstagram} size="lg" style={{color: "#ffff"}} />
           </a>
           <a href="" className="my-0.5">
-            <FontAwesomeIcon icon={faXTwitter} size="lg" style={{color: "#3D3C3A"}} />
+            <FontAwesomeIcon icon={faXTwitter} size="lg" style={{color: "#ffff"}} />
           </a>
           <a href="" className="my-0.5">
-            <FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#3D3C3A"}} />
+            <FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#ffff"}} />
           </a>
           <a href="" className="my-0.5">
-            <FontAwesomeIcon icon={faYoutube} size="lg" style={{color: "#3D3C3A"}} />
+            <FontAwesomeIcon icon={faYoutube} size="lg" style={{color: "#ffff"}} />
           </a>
           <a href="" className="my-0.5">
-            <FontAwesomeIcon icon={faTiktok} size="lg" style={{color: "#3D3C3A"}} />
+            <FontAwesomeIcon icon={faTiktok} size="lg" style={{color: "#ffff"}} />
           </a>
         </ul>
       </div>
