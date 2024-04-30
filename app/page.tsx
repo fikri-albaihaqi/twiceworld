@@ -48,14 +48,14 @@ export default function Page() {
         />
       </header>
       
-      <section className="flex items-center h-screen mx-16">
-        <div className="relative w-[45vw] h-[70vh] flex justify-center">
+      <section className="flex flex-col md:flex-row items-center xl:h-screen mx-16">
+        <div className="relative w-[100vw] h-[300px] md:w-[45vw] md:h-[40vh] lg:h-[50vh] xl:h-[70vh] flex justify-center">
           <Image src="/twice-group-1.png" alt="Twice Group Photo From 'I Got You' Set" fill={true}
             className="object-contain"
           />
         </div>
-        <div className="w-[50vw] pl-8">
-          <div className="mb-4">
+        <div className="w-[90vw] md:w-[50vw] pl-8">
+          <div className="mt-8 md:mt-0 mb-4">
             <h1 className={`text-4xl text-primary-orange absolute ml-1 -mt-1 ${bungee.className}`}>
               ABOUT TWICE
             </h1>
@@ -70,7 +70,7 @@ export default function Page() {
           </p>
           <Link 
             href="/"
-            className="absolute z-10 no-underline
+            className="absolute z-10 no-underline font-semibold
               before:bg-primary-orange before:content-[''] before:w-full before:absolute before:bottom-[3px]
               before:h-[4px] before:left-0 before:block before:transition-all before:-z-10 hover:before:h-[80%]"
           >
