@@ -33,7 +33,7 @@ export default function Page() {
         <Image src="/history-header.png" alt="Twice Ready To Be Concert in Las Vegas" fill={true} />
       </header>
 
-      <section className="">
+      <section className="mx-16">
         {histories?.map((history) => (
           <History 
             key={history.id} 
@@ -44,18 +44,6 @@ export default function Page() {
             description={history.description} 
           />
         ))}
-      </section>
-
-      <section className="flex w-full justify-center items-center mt-56 mb-32">
-        <Image src="/title-bg.svg" alt="Background for Title Text" width={480} height={480}
-          className="absolute"
-        />
-        <h1 className={`absolute text-4xl text-alternate-black text-center ${bungee.className}`}>
-          TWICE'S HONOURS
-        </h1>
-        <h1 className={`absolute text-4xl text-cream -mr-3 -mt-1 text-center ${bungee.className}`}>
-          TWICE'S HONOURS
-        </h1>
       </section>
     </main>
   )

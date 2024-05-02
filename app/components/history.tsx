@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { poppins } from "../assets/fonts"
 
 export default function History({
@@ -17,20 +18,20 @@ export default function History({
 
   return(
     id % 2 !== 0 ? (
-      <div className="flex items-center h-[1080px]">
-      <div className="w-1/2 ml-16 pr-16">
-        <h1 className={`text-4xl font-bold ${poppins.className}`}>{title}</h1>
-        <h2 className={`font-bold ${poppins.className}`}>{date}</h2>
-        <p className="mt-6">
-          {description}
-        </p>  
+      <div className="flex justify-between items-center my-16">
+        <div className="w-1/2">
+          <h1 className={`text-4xl font-bold ${poppins.className}`}>{title}</h1>
+          <h2 className={`font-bold ${poppins.className}`}>{date}</h2>
+          <p className="mt-6">
+            {description}
+          </p>  
+        </div>
+      
+        <Image src={img} alt={description} width={500} height={0} className="right-0" />
       </div>
-
-      <div className={`w-[60%] h-[1080px] relative right-0 bg-cover`} style={{backgroundImage: `url(${img})`}}></div>
-    </div>
     ) : (
-      <div className="flex items-center h-[1080px]">
-        <div className={`w-[60%] h-[1080px] relative right-0 bg-cover`} style={{backgroundImage: `url(${img})`}}></div>
+      <div className="flex justify-between items-center my-16">
+        <Image src={img} alt={description} width={500} height={0} className="right-0" />
 
         <div className="w-1/2 mr-16 pl-16">
           <h1 className={`text-4xl font-bold ${poppins.className}`}>{title}</h1>
