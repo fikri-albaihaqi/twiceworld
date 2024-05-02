@@ -21,19 +21,19 @@ export default function Menu() {
         <div className="flex py-8">
           <ul className="hidden md:flex mx-8">
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faInstagram} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faInstagram} size="lg" style={{color: "#EB8038"}} />
             </a>
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faXTwitter} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faXTwitter} size="lg" style={{color: "#EB8038"}} />
             </a>
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#EB8038"}} />
             </a>
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faYoutube} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faYoutube} size="lg" style={{color: "#EB8038"}} />
             </a>
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faTiktok} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faTiktok} size="lg" style={{color: "#EB8038"}} />
             </a>
           </ul>
           <div 
@@ -42,9 +42,9 @@ export default function Menu() {
           >
             <span
               className={`w-[48px] h-[24px] bg-none relative inline-flex text-white 
-                before:content-[''] before:w-full before:h-[2px] before:absolute before:bg-alternate-black
+                before:content-[''] before:w-full before:h-[2px] before:absolute before:bg-primary-orange
                 after:content-[''] after:right-0 after:h-[2px] after:absolute 
-                after:bg-alternate-black group-hover:after:w-full after:transition-all
+                after:bg-primary-orange group-hover:after:w-full after:transition-all
                 ${show ? 'before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full' 
                 : 'before:rotate-0 after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
             ></span>
