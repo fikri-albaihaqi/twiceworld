@@ -45,6 +45,59 @@ export default function Page() {
           />
         ))}
       </section>
+
+      <section className="mx-16">
+        <div className="flex mb-4">
+          <h1 className={`text-3xl md:text-4xl text-primary-orange absolute ml-1 text-center ${bungee.className}`}>
+            AWARDS
+          </h1>
+          <h1 className={`text-3xl md:text-4xl text-alternate-black text-center mt-1 ${bungee.className}`}>
+            AWARDS
+          </h1>
+        </div>
+        <div className="flex">
+          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+            <Image src="/cup-trophy.svg" alt="Music Shows Trophy" width={48} height={84} className="relative left-8 top-8" />
+            
+            <div className="relative left-8 bottom-8">
+              <h1 className="text-6xl font-bold">121</h1>
+              <h6 className="text-lg">Music Shows</h6>
+            </div>
+          </div>
+          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+            <Image src="/mama-trophy.svg" alt="MAMA Awards Trophy" width={32} height={84} className="relative left-8 top-8" />
+            
+            <div className="relative left-8 bottom-8">
+              <h1 className="text-6xl font-bold">19</h1>
+              <h6 className="text-lg">MAMA Awards</h6>
+            </div>
+          </div>
+          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+            <Image src="/gda-trophy.svg" alt="Golden Disc Awards Trophy" width={41} height={84} className="relative left-8 top-8" />
+            
+            <div className="relative left-8 bottom-8">
+              <h1 className="text-6xl font-bold">12</h1>
+              <h6 className="text-lg">Golden Disc Awards</h6>
+            </div>
+          </div>
+          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+            <Image src="/sma-trophy.svg" alt="Seoul Music Awards Trophy" width={25} height={84} className="relative left-8 top-8" />
+            
+            <div className="relative left-8 bottom-8">
+              <h1 className="text-6xl font-bold">7</h1>
+              <h6 className="text-lg">Seoul Music Awards</h6>
+            </div>
+          </div>
+          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+            <Image src="/mma-trophy.svg" alt="Melon Music Awards Trophy" width={64} height={24} className="relative left-8 top-8" />
+            
+            <div className="relative left-8 bottom-8">
+              <h1 className="text-6xl font-bold">5</h1>
+              <h6 className="text-lg">Melon Music Awards</h6>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
