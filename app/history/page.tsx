@@ -28,12 +28,17 @@ export default function Page() {
   ]
 
   return(
-    <main className="flex flex-col">
+    <main className="flex flex-col overflow-hidden">
       <header className="relative -z-10 h-[560px] md:h-[440px] lg:h-[640px] xl:h-[900px]">
-        <Image src="/history-header.png" alt="Twice Ready To Be Concert in Las Vegas" fill={true} />
+        <Image src="/history-header.png" alt="Twice Ready To Be Concert in Las Vegas" fill={true} 
+          className="hidden md:block object-contain object-top" 
+        />
+        <Image src="/history-header-mobile.png" alt="Twice Ready To Be Concert in Las Vegas" fill={true} 
+          className="md:hidden object-contain object-top" 
+        />
       </header>
 
-      <section className="mx-16">
+      <section className="mx-4 md:mx-16">
         {histories?.map((history) => (
           <History 
             key={history.id} 
@@ -56,7 +61,7 @@ export default function Page() {
           </h1>
         </div>
         <div className="flex">
-          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+          <div className="shrink-0 w-[320px] h-[420px] flex flex-col justify-between bg-white mx-px">
             <Image src="/cup-trophy.svg" alt="Music Shows Trophy" width={48} height={84} className="relative left-8 top-8" />
             
             <div className="relative left-8 bottom-8">
@@ -64,7 +69,7 @@ export default function Page() {
               <h6 className="text-lg">Music Shows</h6>
             </div>
           </div>
-          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+          <div className="shrink-0 w-[320px] h-[420px] flex flex-col justify-between bg-white mx-px">
             <Image src="/mama-trophy.svg" alt="MAMA Awards Trophy" width={32} height={84} className="relative left-8 top-8" />
             
             <div className="relative left-8 bottom-8">
@@ -72,7 +77,7 @@ export default function Page() {
               <h6 className="text-lg">MAMA Awards</h6>
             </div>
           </div>
-          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+          <div className="shrink-0 w-[320px] h-[420px] flex flex-col justify-between bg-white mx-px">
             <Image src="/gda-trophy.svg" alt="Golden Disc Awards Trophy" width={41} height={84} className="relative left-8 top-8" />
             
             <div className="relative left-8 bottom-8">
@@ -80,7 +85,7 @@ export default function Page() {
               <h6 className="text-lg">Golden Disc Awards</h6>
             </div>
           </div>
-          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+          <div className="shrink-0 w-[320px] h-[420px] flex flex-col justify-between bg-white mx-px">
             <Image src="/sma-trophy.svg" alt="Seoul Music Awards Trophy" width={25} height={84} className="relative left-8 top-8" />
             
             <div className="relative left-8 bottom-8">
@@ -88,7 +93,7 @@ export default function Page() {
               <h6 className="text-lg">Seoul Music Awards</h6>
             </div>
           </div>
-          <div className="w-[320px] h-[420px] flex flex-col justify-between bg-white mx-0.5">
+          <div className="shrink-0 w-[320px] h-[420px] flex flex-col justify-between bg-white mx-px">
             <Image src="/mma-trophy.svg" alt="Melon Music Awards Trophy" width={64} height={24} className="relative left-8 top-8" />
             
             <div className="relative left-8 bottom-8">
