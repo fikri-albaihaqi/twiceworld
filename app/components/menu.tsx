@@ -97,9 +97,6 @@ export default function Menu() {
               <Link href="/history">History</Link>
             </li>
             <li className={`my-4 ${styles.menuItem}`}>
-              <Link href="">Members</Link>
-            </li>
-            <li className={`my-4 ${styles.menuItem}`}>
               <Link href="">Discography</Link>
             </li>
           </ul>
