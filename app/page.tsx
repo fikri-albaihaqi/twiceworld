@@ -4,6 +4,54 @@ import Image from "next/image"
 import Album from "./components/album"
 
 export default function Page() {
+  const members = [
+    {
+      id: 1,
+      name: "Nayeon",
+      img: "/nayeon.png"
+    },
+    {
+      id: 2,
+      name: "Jeongyeon",
+      img: "/jeongyeon.png"
+    },
+    {
+      id: 3,
+      name: "Momo",
+      img: "/momo.png"
+    },
+    {
+      id: 4,
+      name: "Sana",
+      img: "/sana.png"
+    },
+    {
+      id: 5,
+      name: "Jihyo",
+      img: "/jihyo.png"
+    },
+    {
+      id: 6,
+      name: "Mina",
+      img: "/mina.png"
+    },
+    {
+      id: 7,
+      name: "Dahyun",
+      img: "/dahyun.png"
+    },
+    {
+      id: 8,
+      name: "Chaeyoung",
+      img: "/chaeyoung.png"
+    },
+    {
+      id: 9,
+      name: "Tzuyu",
+      img: "/tzuyu.png"
+    }
+  ]
+
   const albums = [
     {
       id: 1,
@@ -90,10 +138,29 @@ export default function Page() {
           <h1 className={`absolute text-2xl md:text-4xl text-cream -mr-3 -mt-1 text-center ${bungee.className}`}>
             THE MEMBERS
           </h1>
-        </div> 
-        <Image src="/members-polaroid.svg" alt="Twice Members" width={1240} height={0}
-          className="mt-32"
-        />
+        </div>
+        <Image src="/red-string.svg" alt="The red string of fate connecting all twice member" width={800} height={0} 
+          className="hidden lg:block absolute -z-10"
+        /> 
+        <Image src="/red-string-md.svg" alt="The red string of fate connecting all twice member" width={600} height={0} 
+          className="hidden md:block lg:hidden absolute -z-10"
+        /> 
+        <Image src="/red-string-mobile.svg" alt="The red string of fate connecting all twice member" width={250} height={0} 
+          className="md:hidden absolute -z-10"
+        /> 
+        <div className="w-full grid grid-cols-2 justify-items-center mt-32">
+          {members?.map((member) => member.id % 2 !== 0 ? (
+            <Link href="/">
+              <Image key={member.id} src={member.img} alt={member.name} width={500} height={0} />  
+            </Link>
+          ) 
+          : (
+            <Link href="/">
+              <Image key={member.id} src={member.img} alt={member.name} width={500} height={0} className="mt-24 md:mt-48" />  
+            </Link>
+          )
+          )}
+        </div>
       </section>
 
       <section className="relative w-full flex flex-col justify-between items-center pt-32 pb-16">
