@@ -24,7 +24,7 @@ const config: Config = {
         bungee: ['var(--font-bungee)'],
         josefin: ['var(--font-josefin)'],
         dmSerif: ['var(--font-dm-serif)'],
-        permanentMarker: ['var(--font-permanent-marker)'],
+        gloriaHallelujah: ['var(--font-gloria-hallelujah)'],
       },
     },
   },
