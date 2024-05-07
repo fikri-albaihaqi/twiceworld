@@ -5,7 +5,7 @@ import { faInstagram, faXTwitter, faFacebookF, faYoutube, faTiktok } from "@fort
 
 export default function Footer() {
   return(
-    <footer className="absolute w-screen mt-32 h-[256px] bg-primary-orange flex justify-evenly items-center text-white">
+    <footer className="absolute w-screen bottom-0 mt-32 h-[256px] bg-primary-orange flex justify-evenly items-center text-white">
       <Image src="/twice-logo-2.svg" alt="Twiceland Logo" width={0} height={0} 
         className="w-[64px] md:w-[128px]"
       />
