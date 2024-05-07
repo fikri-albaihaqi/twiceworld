@@ -8,47 +8,56 @@ export default function Page() {
     {
       id: 1,
       name: "Nayeon",
-      img: "/nayeon.png"
+      img: "/nayeon.png",
+      link: "/members/nayeon"  
     },
     {
       id: 2,
       name: "Jeongyeon",
-      img: "/jeongyeon.png"
+      img: "/jeongyeon.png",
+      link: "/members/jeongyeon"
     },
     {
       id: 3,
       name: "Momo",
-      img: "/momo.png"
+      img: "/momo.png",
+      link: "/members/momo"
     },
     {
       id: 4,
       name: "Sana",
-      img: "/sana.png"
+      img: "/sana.png",
+      link: "/members/sana"
     },
     {
       id: 5,
       name: "Jihyo",
-      img: "/jihyo.png"
+      img: "/jihyo.png",
+      link: "/members/jihyo"
     },
     {
       id: 6,
       name: "Mina",
-      img: "/mina.png"
+      img: "/mina.png",
+      link: "/members/mina"
     },
     {
       id: 7,
       name: "Dahyun",
-      img: "/dahyun.png"
+      img: "/dahyun.png",
+      link: "/members/dahyun"
     },
     {
       id: 8,
       name: "Chaeyoung",
-      img: "/chaeyoung.png"
+      img: "/chaeyoung.png",
+      link: "/members/chaeyoung"
     },
     {
       id: 9,
       name: "Tzuyu",
-      img: "/tzuyu.png"
+      img: "/tzuyu.png",
+      link: "/members/tzuyu"
     }
   ]
 
@@ -150,13 +159,13 @@ export default function Page() {
         /> 
         <div className="w-full grid grid-cols-2 justify-items-center mt-32">
           {members?.map((member) => member.id % 2 !== 0 ? (
-            <Link href="/">
-              <Image key={member.id} src={member.img} alt={member.name} width={500} height={0} />  
+            <Link key={member.id} href={member.link}>
+              <Image src={member.img} alt={member.name} width={500} height={0} />  
             </Link>
           ) 
           : (
-            <Link href="/">
-              <Image key={member.id} src={member.img} alt={member.name} width={500} height={0} className="mt-24 md:mt-48" />  
+            <Link key={member.id} href={member.link}>
+              <Image src={member.img} alt={member.name} width={500} height={0} className="mt-24 md:mt-48" />  
             </Link>
           )
           )}
