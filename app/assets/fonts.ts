@@ -1,4 +1,4 @@
-import { Bungee, Gloria_Hallelujah, Poppins } from "next/font/google";
+import { Bungee, Gloria_Hallelujah, Poppins, Cutive_Mono } from "next/font/google";
 
 export const bungee = Bungee({ 
   subsets: ['latin'], 
@@ -14,3 +14,8 @@ export const gloriaHallelujah = Gloria_Hallelujah({
   subsets: ['latin'], 
   weight:['400'],
 });
+
+export const cutiveMono = Cutive_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+})

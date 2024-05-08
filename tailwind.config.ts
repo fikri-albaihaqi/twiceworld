@@ -25,6 +25,7 @@ const config: Config = {
         josefin: ['var(--font-josefin)'],
         dmSerif: ['var(--font-dm-serif)'],
         gloriaHallelujah: ['var(--font-gloria-hallelujah)'],
+        cutiveMono: ['var(--font-cutive-mono)'],
       },
     },
   },
