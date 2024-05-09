@@ -7,7 +7,7 @@ export const bungee = Bungee({
 
 export const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '700']
+  weight: ['400', '500', '700']
 });
 
 export const gloriaHallelujah = Gloria_Hallelujah({ 
