@@ -16,7 +16,7 @@ export default function Page() {
               <p>Im Nayeon</p>
               <p>September 22, 1995</p>
             </div>
-            <div className="mt-5 md:mt-8 leading-5 md:leading-7">
+            <div className="max-[413px]:mt-4 mt-5 md:mt-8 max-[413px]:leading-normal leading-5 md:leading-7">
               <p>POSITION: Lead Vocalist, Lead Dancer, Center, Face of the Group</p>
               <p>ZODIAC SIGN: Virgo</p>
               <p>HEIGHT: 163 cm</p>
@@ -25,7 +25,7 @@ export default function Page() {
               <p>INSTAGRAM: @nayeonyny</p>
             </div>
             <Image src="/nayeon-sign.png" alt="Nayeon signature" width={120} height={0} 
-              className="absolute right-0 w-[60px] md:w-[120px]"
+              className="absolute right-0 w-[80px] md:w-[120px]"
             />
             <Image src="/nayeon-kid.png" alt="A childhood photo of Nayeon" width={240} height={0} 
               className="absolute lg:top-0 -left-28 lg:-left-64"
