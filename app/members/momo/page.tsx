@@ -27,7 +27,7 @@ export default function Page() {
             <Image src="/momo-sign.png" alt="Momo signature" width={120} height={0} 
               className="absolute right-0 w-[80px] md:w-[120px]"
             />
-            <Image src="/momo-kid.png" alt="A childhood photo of Jeongyeon" width={240} height={0} 
+            <Image src="/momo-kid.png" alt="A childhood photo of Momo" width={240} height={0} 
               className="absolute lg:top-0 -left-28 lg:-left-64"
             />
             <div className="absolute top-56 lg:top-16 -right-16 lg:-right-72 -rotate-6 uppercase">
