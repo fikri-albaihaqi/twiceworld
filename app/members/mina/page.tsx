@@ -37,7 +37,7 @@ export default function Page() {
                 <h2>SONG CREDITS</h2>
                 <br />
                 <div className="self-start ml-3">
-                  <p>#0004 MYOUI MINA</p>
+                  <p>#0006 MYOUI MINA</p>
                   <p>MARCH 24, 1997</p>
                 </div>
                 <table className="w-[216px] table-auto">
