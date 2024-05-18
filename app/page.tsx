@@ -113,7 +113,7 @@ export default function Page() {
         </div>
         <div className="w-[90vw] md:w-[50vw] pl-8">
           <div className="mt-8 md:mt-0 mb-4">
-            <h1 className={`text-4xl text-primary-orange absolute ml-1 -mt-1 ${bungee.className}`}>
+            <h1 className={`text-4xl text-cream absolute ml-1 -mt-1 ${bungee.className}`}>
               ABOUT TWICE
             </h1>
             <h1 className={`text-4xl text-alternate-black ${bungee.className}`}>
@@ -128,7 +128,7 @@ export default function Page() {
           <Link 
             href="/"
             className="absolute no-underline font-semibold
-              before:bg-primary-orange before:content-[''] before:w-full before:absolute before:bottom-[3px]
+              before:bg-primary-pink before:content-[''] before:w-full before:absolute before:bottom-[3px]
               before:h-[4px] before:left-0 before:block before:transition-all before:-z-10 hover:before:h-[80%]"
           >
             Read TWICE History
@@ -172,12 +172,12 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="relative w-full flex flex-col justify-between items-center pt-32 pb-16">
+      <section className="relative w-full flex flex-col justify-between items-center pt-32 pb-16 mb-32">
         <div className="flex justify-center mb-4">
-          <h1 className={`text-3xl md:text-4xl text-primary-orange absolute -mr-2 md:-mr-3 -mt-1 text-center ${bungee.className}`}>
+          <h1 className={`text-4xl text-cream absolute ml-2 -mt-1 ${bungee.className}`}>
             DISCOGRAPHY
           </h1>
-          <h1 className={`text-3xl md:text-4xl text-alternate-black text-center ${bungee.className}`}>
+          <h1 className={`text-4xl text-alternate-black ${bungee.className}`}>
             DISCOGRAPHY
           </h1>
         </div>
@@ -189,7 +189,7 @@ export default function Page() {
         <Link 
           href="/"
           className="absolute no-underline bottom-0 mt-16 font-semibold
-              before:bg-primary-orange before:content-[''] before:w-full before:absolute before:bottom-[3px]
+              before:bg-primary-pink before:content-[''] before:w-full before:absolute before:bottom-[3px]
               before:h-[4px] before:left-0 before:block before:transition-all before:-z-10 hover:before:h-[80%]"
         >
           See All TWICE Discography

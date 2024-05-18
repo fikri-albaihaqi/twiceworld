@@ -16,7 +16,7 @@ const config: Config = {
       colors: {
         'primary-black': '#1B1816',
         'alternate-black': '#3D3C3A',
-        'primary-orange': '#EB8038',
+        'primary-pink': '#ED5B94',
         'heart-red': '#882B11',
         'cream': '#D1CAA7'
       },

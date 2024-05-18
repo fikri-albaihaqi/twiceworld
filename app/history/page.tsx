@@ -51,9 +51,9 @@ export default function Page() {
         ))}
       </section>
 
-      <section className="mx-16">
+      <section className="mx-16 mb-32">
         <div className="flex mb-4">
-          <h1 className={`text-3xl md:text-4xl text-primary-orange absolute ml-1 text-center ${bungee.className}`}>
+          <h1 className={`text-3xl md:text-4xl text-cream absolute ml-1 text-center ${bungee.className}`}>
             AWARDS
           </h1>
           <h1 className={`text-3xl md:text-4xl text-alternate-black text-center mt-1 ${bungee.className}`}>
