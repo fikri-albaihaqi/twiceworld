@@ -42,11 +42,11 @@ export default function Menu() {
           >
             <span
               className={`w-[48px] h-[24px] bg-none relative inline-flex text-white 
-                before:content-[''] before:w-full before:h-[2px] before:absolute before:bg-white
+                before:content-[''] before:w-full before:h-[2px] before:absolute
                 after:content-[''] after:right-0 after:h-[2px] after:absolute 
-                after:bg-white group-hover:after:w-full after:transition-all
+                group-hover:after:w-full after:transition-all
                 ${show ? 'before:bg-primary-black after:bg-primary-black before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full' 
-                : 'before:rotate-0 after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
+                : 'before:bg-white before:rotate-0 after:bg-white after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
             ></span>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function Menu() {
               <Link href="/history">History</Link>
             </li>
             <li className={`my-4 ${styles.menuItem}`}>
-              <Link href="">Discography</Link>
+              <Link href="/discography">Discography</Link>
             </li>
           </ul>
         </div>
