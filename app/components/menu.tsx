@@ -16,41 +16,22 @@ export default function Menu() {
 
   return (
     <>
-      <nav className="flex justify-between px-8 md:px-16 absolute w-screen top-0">
-        <Image src="/twice-logo.svg" width={0} height={0} alt="Twice logo" className="py-4 w-[48px] md:w-[64px]" />
-        <div className="flex py-8">
-          <ul className="hidden md:flex mx-8">
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faInstagram} size="lg" style={{color: "#fff"}} />
-            </a>
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faXTwitter} size="lg" style={{color: "#fff"}} />
-            </a>
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#fff"}} />
-            </a>
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faYoutube} size="lg" style={{color: "#fff"}} />
-            </a>
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faTiktok} size="lg" style={{color: "#fff"}} />
-            </a>
-          </ul>
-          <div 
-            onClick={toggleShow}
-            className={`${show ? 'fixed right-8 top-10' : 'relative'} z-20 group stroke-white cursor-pointer`}
-          >
-            <span
-              className={`w-[48px] h-[24px] bg-none relative inline-flex text-white 
-                before:content-[''] before:w-full before:h-[2px] before:absolute
-                after:content-[''] after:right-0 after:h-[2px] after:absolute 
-                group-hover:after:w-full after:transition-all
-                ${show ? 'before:bg-primary-black after:bg-primary-black before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full' 
-                : 'before:bg-white before:rotate-0 after:bg-white after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
-            ></span>
-          </div>
+      <Image src="/twice-logo.svg" width={0} height={0} alt="Twice logo" className="fixed z-10 top-0 ml-8 py-4 w-[48px] md:w-[64px]" />
+      <div className="fixed top-0 right-8 z-50 flex py-8">
+        <div 
+          onClick={toggleShow}
+          className={`${show ? 'fixed right-8 top-10' : 'relative'} group stroke-white cursor-pointer`}
+        >
+          <span
+            className={`w-[48px] h-[24px] bg-none relative inline-flex text-white 
+              before:content-[''] before:w-full before:h-[4px] before:absolute
+              after:content-[''] after:right-0 after:h-[4px] after:absolute 
+              group-hover:after:w-full after:transition-all
+              ${show ? 'before:bg-primary-black after:bg-primary-black before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full' 
+              : 'before:bg-white before:rotate-0 after:bg-white after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
+          ></span>
         </div>
-      </nav>
+      </div>
       <div 
         className="hidden fixed overflow-hidden items-center z-10 w-screen md:w-[50%] lg:w-[40%] h-screen right-0 
         bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] bg-white"
