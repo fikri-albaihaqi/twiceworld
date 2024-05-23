@@ -187,7 +187,7 @@ export default function Page() {
           ))}
         </div>
         <Link 
-          href="/"
+          href="/discography"
           className="absolute no-underline bottom-0 mt-16 font-semibold
               before:bg-primary-pink before:content-[''] before:w-full before:absolute before:bottom-[3px]
               before:h-[4px] before:left-0 before:block before:transition-all before:-z-10 hover:before:h-[80%]"
