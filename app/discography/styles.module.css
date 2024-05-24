@@ -1,0 +1,43 @@
+@keyframes in {
+  0% {
+    height: 100px;
+  }
+  50% {
+    height: 155px;
+  }
+  100% {
+    height: 150px;
+  }
+}
+
+@keyframes out {
+  0% {
+    height: 150px;
+  }
+  10% {
+    height: 155px;
+  }
+  100% {
+    height: 100px;
+  }
+}
+
+.discography {
+  animation: out 200ms ease-in-out alternate both;
+}
+
+.discography:hover {
+  animation: in 400ms ease-in-out alternate both;
+}
+
+.discography .detail {
+  opacity: 0;
+  transition: all linear;
+  transition-delay: 80ms;
+}
+
+.discography:hover .detail {
+  opacity: 1;
+  transition: all linear;
+  transition-delay: 80ms;
+}

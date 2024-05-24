@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import styles from "@/app/discography/styles.module.css"
 
 export default function Page() {
   const discographies = [
@@ -119,13 +120,12 @@ export default function Page() {
           <Link
             href=""
             key={discography.id}
-            className="transition-all duration-1000 ease-in-out relative h-[100px] hover:h-full py-8 pl-12 flex flex-col 
-              hover:z-50 group hover:text-primary-pink text-3xl uppercase shadow-[24px_-6px_16px_rgba(120,120,120,0.4)] 
-              first:shadow-none"
+            className={`${styles.discography} py-8 pl-12 flex flex-col text-3xl uppercase 
+              shadow-[24px_-6px_16px_rgba(120,120,120,0.4)] first:shadow-none hover:text-primary-pink`}
           >
             {discography.name} • {discography.releaseDate.slice(0, 4)}
             <span
-              className="text-base text-alternate-black font-normal mt-6 hidden group-hover:block"
+              className={`${styles.detail} text-base text-alternate-black mt-6`}
             >
               {discography.altTitle} • {discography.numOfTrack} Tracks
             </span>
