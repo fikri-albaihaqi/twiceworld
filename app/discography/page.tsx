@@ -118,7 +118,7 @@ export default function Page() {
       <div className="w-1/2 flex flex-col ml-8">
         {discographies.map((discography) => (
           <Link
-            href=""
+            href={`/discography/${discography.name}`}
             key={discography.id}
             className={`${styles.discography} py-8 pl-12 flex flex-col text-3xl uppercase 
               shadow-[24px_-6px_16px_rgba(120,120,120,0.4)] first:shadow-none hover:text-primary-pink`}
