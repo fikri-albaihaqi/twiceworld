@@ -126,7 +126,7 @@ export default function Page() {
             Debuted on October 20th, 2015 with the 1st EP [THE STORY BEGINS] that featured the title track “Like OOH-AHH”.
           </p>
           <Link 
-            href="/"
+            href="/history"
             className="absolute no-underline font-semibold
               before:bg-primary-pink before:content-[''] before:w-full before:absolute before:bottom-[3px]
               before:h-[4px] before:left-0 before:block before:transition-all before:-z-10 hover:before:h-[80%]"
