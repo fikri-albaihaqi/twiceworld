@@ -3,22 +3,30 @@
 import Image from "next/image"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faInstagram, faTiktok, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link";
 import styles from './Menu.module.css'
+import { usePathname } from "next/navigation"
 
 export default function Menu() {
   const [show, setShow] = useState(false);
+  const pathname = usePathname()
 
   const toggleShow = () => {
     setShow(!show)
   }
 
+  useEffect(() => {
+    if (show) {
+      setShow(!show)
+    }
+  }, [pathname])
+
   return (
     <>
       <Image src="/twice-logo.svg" width={0} height={0} alt="Twice logo" className="fixed z-10 top-0 ml-8 py-4 w-[48px] md:w-[64px]" />
       <div className="fixed top-0 right-8 z-50 flex py-8">
-        <div 
+        <div
           onClick={toggleShow}
           className={`${show ? 'fixed right-8 top-10' : 'relative'} group stroke-white cursor-pointer`}
         >
@@ -27,46 +35,46 @@ export default function Menu() {
               before:content-[''] before:w-full before:h-[4px] before:absolute
               after:content-[''] after:right-0 after:h-[4px] after:absolute 
               group-hover:after:w-full after:transition-all
-              ${show ? 'before:bg-primary-black after:bg-primary-black before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full' 
-              : 'before:bg-white before:rotate-0 after:bg-white after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
+              ${show ? 'before:bg-primary-black after:bg-primary-black before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full'
+                : 'before:bg-white before:rotate-0 after:bg-white after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
           ></span>
         </div>
       </div>
-      <div 
+      <div
         className="hidden fixed overflow-hidden items-center z-10 w-screen md:w-[50%] lg:w-[40%] h-screen right-0 
         bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] bg-white"
         style={{
           display: show ? 'flex' : 'none'
         }}
       >
-        <Image src="/mail.png" alt="Mail Sticker" width={128} height={0} 
+        <Image src="/mail.png" alt="Mail Sticker" width={128} height={0}
           className="absolute left-16 top-20 -rotate-[20deg]"
         />
-        <Image src="/smiley-1.png" alt="Mail Sticker" width={64} height={0} 
+        <Image src="/smiley-1.png" alt="Mail Sticker" width={64} height={0}
           className="absolute right-8 mb-24"
         />
-        <Image src="/candy.png" alt="Mail Sticker" width={64} height={0} 
+        <Image src="/candy.png" alt="Mail Sticker" width={64} height={0}
           className="absolute left-16 bottom-24 rotate-[20deg]"
         />
-        <Image src="/sky-2.png" alt="Mail Sticker" width={320} height={0} 
+        <Image src="/sky-2.png" alt="Mail Sticker" width={320} height={0}
           className="absolute right-0 bottom-0"
         />
         <div className="flex flex-col ml-8 md:ml-16">
-        <ul className="flex absolute top-8">
+          <ul className="flex absolute top-8">
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faInstagram} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faInstagram} size="lg" style={{ color: "#3D3C3A" }} />
             </a>
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faXTwitter} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faXTwitter} size="lg" style={{ color: "#3D3C3A" }} />
             </a>
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faFacebookF} size="lg" style={{ color: "#3D3C3A" }} />
             </a>
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faYoutube} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faYoutube} size="lg" style={{ color: "#3D3C3A" }} />
             </a>
             <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faTiktok} size="lg" style={{color: "#3D3C3A"}} />
+              <FontAwesomeIcon icon={faTiktok} size="lg" style={{ color: "#3D3C3A" }} />
             </a>
           </ul>
 
