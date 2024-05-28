@@ -111,16 +111,16 @@ export default function Page() {
   ]
 
   return (
-    <main className="w-full flex">
-      <div className="w-1/2 h-screen">
-        <Image src="/alb-between.jpg" alt="Album" width={1000} height={0} className="fixed w-[50vw]" />
+    <main className="w-screen h-max flex flex-col xl:flex-row">
+      <div className="sticky top-0 w-screen xl:w-1/2 h-[40vh] xl:h-screen">
+        <Image src="/alb-between.jpg" alt="Album" fill={true} className="object-cover" />
       </div>
-      <div className="w-1/2 flex flex-col ml-8">
+      <div className="w-screen xl:w-1/2 flex flex-col">
         {discographies.map((discography) => (
           <Link
             href={`/discography/${discography.name}`}
             key={discography.id}
-            className={`${styles.discography} py-8 pl-12 flex flex-col text-3xl uppercase 
+            className={`${styles.discography} py-8 pl-8 xl:pl-12 flex flex-col text-3xl uppercase 
               shadow-[24px_-6px_16px_rgba(120,120,120,0.4)] first:shadow-none hover:text-primary-pink`}
           >
             {discography.name} • {discography.releaseDate.slice(0, 4)}

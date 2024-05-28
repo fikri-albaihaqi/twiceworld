@@ -2,13 +2,13 @@ import Image from "next/image";
 
 export default function Page({ params }: { params: { name: string } }) {
   return (
-    <main>
-      <div className="w-full flex">
-        <div className="w-1/2 h-screen">
-          <Image src="/alb-fol.jpg" alt="Album" width={1000} height={0} className="w-[50vw]" />
+    <main className="">
+      <div className="w-screen h-max flex flex-col xl:flex-row">
+        <div className="sticky top-0 w-screen xl:w-1/2 h-[40vh] xl:h-screen">
+          <Image src="/alb-fol.jpg" alt="Album" fill={true} className="object-cover" />
         </div>
-        <div className="w-1/2 px-16 flex flex-col justify-center mt-32">
-          <div>
+        <div className="w-screen xl:w-1/2 flex flex-col justify-center mt-32">
+          <div className="mx-16">
             <h1 className="text-6xl uppercase font-bold text-primary-pink">Formula of Love O+T=&lt;3</h1>
             <h2 className="font-bold text-2xl mt-4">2021</h2>
 
@@ -30,7 +30,7 @@ export default function Page({ params }: { params: { name: string } }) {
             </p>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 mx-16">
             <h2 className="text-2xl text-primary-pink font-bold">TRACK LIST</h2>
             <ol className="list-decimal ml-4">
               <li>SCIENTIST</li>
@@ -57,7 +57,7 @@ export default function Page({ params }: { params: { name: string } }) {
       <iframe src="https://www.youtube.com/embed/vPwaXytZcgI"
         title="TWICE “SCIENTIST” M/V"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        className="w-[90%] h-screen m-auto mt-16 mb-16 rounded-3xl"
+        className="w-[90%] h-[40vh] lg:h-[60vh] xl:h-screen m-auto mt-16 mb-16 rounded-3xl"
       >
       </iframe>
     </main>
