@@ -56,10 +56,7 @@ export default function Page({ params }: { params: { name: string } }) {
       </div>
       <iframe src="https://www.youtube.com/embed/vPwaXytZcgI"
         title="TWICE “SCIENTIST” M/V"
-        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
         className="w-[90%] h-screen m-auto mt-16 mb-16 rounded-3xl"
       >
       </iframe>
