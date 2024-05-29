@@ -1,7 +1,6 @@
 import { bungee } from "@/app/assets/fonts"
 import Link from "next/link"
 import Image from "next/image"
-import Album from "./components/album"
 
 export default function Page() {
   const members = [
@@ -9,7 +8,7 @@ export default function Page() {
       id: 1,
       name: "Nayeon",
       img: "/nayeon.png",
-      link: "/members/nayeon"  
+      link: "/members/nayeon"
     },
     {
       id: 2,
@@ -104,7 +103,7 @@ export default function Page() {
           className="absolute md:hidden -z-10 object-contain object-top"
         />
       </header>
-      
+
       <section className="flex flex-col md:flex-row items-center xl:h-screen mx-16">
         <div className="relative w-[100vw] h-[300px] md:w-[45vw] md:h-[40vh] lg:h-[50vh] xl:h-[70vh] flex justify-center">
           <Image src="/twice-group-1.png" alt="Twice Group Photo From 'I Got You' Set" fill={true}
@@ -121,11 +120,11 @@ export default function Page() {
             </h1>
           </div>
           <p className="mt-4 mb-4">
-            TWICE is a K-Pop girl group produced by JYP Entertainment through the reality program [SIXTEEN]. 
-            The group is composed of 9 members: NAYEON, JEONGYEON, MOMO, SANA, JIHYO, MINA, DAHYUN, CHAEYOUNG, and TZUYU. 
+            TWICE is a K-Pop girl group produced by JYP Entertainment through the reality program [SIXTEEN].
+            The group is composed of 9 members: NAYEON, JEONGYEON, MOMO, SANA, JIHYO, MINA, DAHYUN, CHAEYOUNG, and TZUYU.
             Debuted on October 20th, 2015 with the 1st EP [THE STORY BEGINS] that featured the title track “Like OOH-AHH”.
           </p>
-          <Link 
+          <Link
             href="/history"
             className="absolute no-underline font-semibold
               before:bg-primary-pink before:content-[''] before:w-full before:absolute before:bottom-[3px]
@@ -148,26 +147,26 @@ export default function Page() {
             THE MEMBERS
           </h1>
         </div>
-        <Image src="/red-string.svg" alt="The red string of fate connecting all twice member" width={800} height={0} 
+        <Image src="/red-string.svg" alt="The red string of fate connecting all twice member" width={800} height={0}
           className="hidden lg:block absolute -z-10"
-        /> 
-        <Image src="/red-string-md.svg" alt="The red string of fate connecting all twice member" width={600} height={0} 
+        />
+        <Image src="/red-string-md.svg" alt="The red string of fate connecting all twice member" width={600} height={0}
           className="hidden md:block lg:hidden absolute -z-10"
-        /> 
-        <Image src="/red-string-mobile.svg" alt="The red string of fate connecting all twice member" width={250} height={0} 
+        />
+        <Image src="/red-string-mobile.svg" alt="The red string of fate connecting all twice member" width={250} height={0}
           className="md:hidden absolute -z-10"
-        /> 
+        />
         <div className="w-full grid grid-cols-2 justify-items-center mt-32">
           {members?.map((member) => member.id % 2 !== 0 ? (
             <Link key={member.id} href={member.link}>
-              <Image src={member.img} alt={member.name} width={500} height={0} />  
-            </Link>
-          ) 
-          : (
-            <Link key={member.id} href={member.link}>
-              <Image src={member.img} alt={member.name} width={500} height={0} className="mt-24 md:mt-48" />  
+              <Image src={member.img} alt={member.name} width={500} height={0} />
             </Link>
           )
+            : (
+              <Link key={member.id} href={member.link}>
+                <Image src={member.img} alt={member.name} width={500} height={0} className="mt-24 md:mt-48" />
+              </Link>
+            )
           )}
         </div>
       </section>
@@ -183,10 +182,12 @@ export default function Page() {
         </div>
         <div className="w-[80%] grid grid-cols-2 md:grid-cols-3 justify-items-center">
           {albums.map((album) => (
-            <Album key={album.id} name={album.name} img={album.img} />
+            <Link href={`/discography/${album.name}`} key={album.id} className="my-4 mx-2">
+              <Image src={album.img} alt={album.name} width={360} height={360} />
+            </Link>
           ))}
         </div>
-        <Link 
+        <Link
           href="/discography"
           className="absolute no-underline bottom-0 mt-16 font-semibold
               before:bg-primary-pink before:content-[''] before:w-full before:absolute before:bottom-[3px]
