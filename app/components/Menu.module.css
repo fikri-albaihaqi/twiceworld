@@ -1,3 +1,99 @@
+@keyframes in-sm {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100vw;
+  }
+}
+
+@keyframes out-sm {
+  from {
+    width: 100vw;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+@keyframes in-md {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 50vw;
+  }
+}
+
+@keyframes out-md {
+  from {
+    width: 50vw;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+@keyframes in-lg {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 40vw;
+  }
+}
+
+@keyframes out-lg {
+  from {
+    width: 40vw;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide {
+    display: flex;
+    animation: out-lg 200ms ease-in-out alternate both;
+  }
+
+  .show {
+    display: flex;
+    animation: in-lg 200ms ease-in-out alternate both;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hide {
+    display: flex;
+    animation: out-md 200ms ease-in-out alternate both;
+  }
+
+  .show {
+    display: flex;
+    animation: in-md 200ms ease-in-out alternate both;
+  }
+}
+
+@media (max-width: 767px) {
+  .hide {
+    display: flex;
+    animation: out-sm 200ms ease-in-out alternate both;
+  }
+
+  .show {
+    display: flex;
+    animation: in-sm 200ms ease-in-out alternate both;
+  }
+}
+
 .menuItem {
   font-family: var(--font-josefin);
   font-weight: 500;

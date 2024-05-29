@@ -42,11 +42,8 @@ export default function Menu() {
         </div>
       </div>
       <div
-        className="hidden fixed overflow-hidden items-center z-10 w-screen md:w-[50%] lg:w-[40%] h-screen right-0 
-        bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] bg-white"
-        style={{
-          display: show ? 'flex' : 'none'
-        }}
+        className={`fixed overflow-hidden items-center z-10 h-screen right-0 
+          bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] bg-white ${show ? styles.show : styles.hide}`}
       >
         <Image src="/mail.png" alt="Mail Sticker" width={128} height={0}
           className="absolute left-16 top-20 -rotate-[20deg]"
