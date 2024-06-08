@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "@/app/discography/styles.module.css"
+import styles from "@/app/(public)/discography/styles.module.css"
 
 export default function Page() {
   const discographies = [

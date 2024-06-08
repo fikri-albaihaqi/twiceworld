@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import './globals.css'
-import Menu from './components/menu'
-import { poppins } from './assets/fonts'
-import Footer from './components/footer'
+import '../globals.css'
+import Menu from '../components/menu'
+import { poppins } from '../assets/fonts'
+import Footer from '../components/footer'
 
 export const metadata: Metadata = {
   title: 'Twiceland',
