@@ -1,7 +1,36 @@
+"use client"
+
+import { auth } from "@/app/utils/firebaseConfig"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+
 const Page = () => {
-  return(
+  const [user, setUser] = useState<any>(null)
+  const router = useRouter()
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        setUser(authUser)
+      } else {
+        setUser(null)
+        router.push("/login")
+      }
+    })
+
+    return () => unsubscribe()
+  }, [])
+
+  return (
     <>
-      <h1>TES ADMIN</h1>
+      {user ? (
+        <div className="min-h-screen">
+          <h1>Logged In</h1>
+        </div>
+      ) : (
+        <div className="min-h-screen">
+        </div>
+      )}
     </>
   )
 }
