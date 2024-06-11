@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link";
 import styles from './Menu.module.css'
 import { usePathname } from "next/navigation"
+import Socials from "./socials"
 
 export default function Menu() {
   const [show, setShow] = useState(false);
@@ -38,7 +39,7 @@ export default function Menu() {
               before:content-[''] before:w-full before:h-[4px] before:absolute
               after:content-[''] after:right-0 after:h-[4px] after:absolute 
               group-hover:after:w-full after:transition-all
-              ${show ? 'before:bg-primary-black after:bg-primary-black before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full'
+              ${show ? 'before:bg-white after:bg-white before:rotate-45 after:-rotate-45 after:top-0 after:bottom-auto after:w-full'
                 : 'before:bg-white before:rotate-0 after:bg-white after:rotate-0 after:top-auto after:bottom-0 after:w-[72%]'}`}
           ></span>
         </div>
@@ -60,23 +61,7 @@ export default function Menu() {
           className="absolute right-0 bottom-0"
         />
         <div className="flex flex-col ml-8 md:ml-16">
-          <ul className="flex absolute top-8">
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faInstagram} size="lg" style={{ color: "#3D3C3A" }} />
-            </a>
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faXTwitter} size="lg" style={{ color: "#3D3C3A" }} />
-            </a>
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faFacebookF} size="lg" style={{ color: "#3D3C3A" }} />
-            </a>
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faYoutube} size="lg" style={{ color: "#3D3C3A" }} />
-            </a>
-            <a href="" className="mx-2">
-              <FontAwesomeIcon icon={faTiktok} size="lg" style={{ color: "#3D3C3A" }} />
-            </a>
-          </ul>
+          <Socials vertical={false} />
 
           <ul className={`text-4xl xl:text-6xl text-alternate-black font-semibold`}>
             <li className={`my-4 ${styles.menuItem}`}>
