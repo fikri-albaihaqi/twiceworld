@@ -1,6 +1,7 @@
 import { bungee } from "@/app/assets/fonts"
 import Link from "next/link"
 import Image from "next/image"
+import Discography from "../components/discography"
 
 export default function Page() {
   const members = [
@@ -65,7 +66,7 @@ export default function Page() {
       id: 1,
       name: "Zone",
       altTitle: "Jihyo's 1st Mini Album",
-      img: "/alb-zone.jpg",
+      image: "/alb-zone.jpg",
       releaseDate: "2023-08-18",
       numOfTrack: 7
     },
@@ -73,7 +74,7 @@ export default function Page() {
       id: 2,
       name: "Ready To Be",
       altTitle: "12th Mini Album",
-      img: "/alb-rtb.jpg",
+      image: "/alb-rtb.jpg",
       releaseDate: "2023-03-10",
       numOfTrack: 7
     },
@@ -81,7 +82,7 @@ export default function Page() {
       id: 3,
       name: "Between 1&2",
       altTitle: "11th Mini Album",
-      img: "/alb-between.jpg",
+      image: "/alb-between.jpg",
       releaseDate: "2022-08-26",
       numOfTrack: 7
     },
@@ -89,7 +90,7 @@ export default function Page() {
       id: 4,
       name: "Im Nayeon",
       altTitle: "Nayeon's 1st Mini Album",
-      img: "/alb-nayeon.jpg",
+      image: "/alb-nayeon.jpg",
       releaseDate: "2022-06-24",
       numOfTrack: 7
     },
@@ -97,7 +98,7 @@ export default function Page() {
       id: 5,
       name: "Formula of Love: O+T=<3",
       altTitle: "3rd Full Album",
-      img: "/alb-fol.jpg",
+      image: "/alb-fol.jpg",
       releaseDate: "2021-11-12",
       numOfTrack: 16
     },
@@ -105,7 +106,7 @@ export default function Page() {
       id: 6,
       name: "Taste of Love",
       altTitle: "10th Mini Album",
-      img: "/alb-tol.jpg",
+      image: "/alb-tol.jpg",
       releaseDate: "2021-06-09",
       numOfTrack: 6
     },
@@ -113,7 +114,7 @@ export default function Page() {
       id: 7,
       name: "Eyes Wide Open",
       altTitle: "2nd Full Album",
-      img: "/alb-tol.jpg",
+      image: "/alb-tol.jpg",
       releaseDate: "2020-10-26",
       numOfTrack: 13
     },
@@ -121,7 +122,7 @@ export default function Page() {
       id: 8,
       name: "More & More",
       altTitle: "9th Mini Album",
-      img: "/alb-tol.jpg",
+      image: "/alb-tol.jpg",
       releaseDate: "2020-06-01",
       numOfTrack: 7
     },
@@ -129,7 +130,7 @@ export default function Page() {
       id: 9,
       name: "Feel Special",
       altTitle: "8th Mini Album",
-      img: "/alb-tol.jpg",
+      image: "/alb-tol.jpg",
       releaseDate: "2019-09-23",
       numOfTrack: 7
     },
@@ -137,7 +138,7 @@ export default function Page() {
       id: 10,
       name: "Fancy You",
       altTitle: "7th Mini Album",
-      img: "/alb-tol.jpg",
+      image: "/alb-tol.jpg",
       releaseDate: "2019-04-22",
       numOfTrack: 6
     },
@@ -145,7 +146,7 @@ export default function Page() {
       id: 11,
       name: `The Year of "YES"`,
       altTitle: "3rd Special Album",
-      img: "/alb-tol.jpg",
+      image: "/alb-tol.jpg",
       releaseDate: "2018-12-12",
       numOfTrack: 9
     },
@@ -153,7 +154,7 @@ export default function Page() {
       id: 12,
       name: "YES or YES",
       altTitle: "6th Mini Album",
-      img: "/alb-tol.jpg",
+      image: "/alb-tol.jpg",
       releaseDate: "2018-11-05",
       numOfTrack: 7
     },
@@ -161,7 +162,7 @@ export default function Page() {
       id: 13,
       name: "Summer Nights",
       altTitle: "2nd Special Album",
-      img: "/alb-tol.jpg",
+      image: "/alb-tol.jpg",
       releaseDate: "2018-07-09",
       numOfTrack: 9
     }
@@ -256,25 +257,7 @@ export default function Page() {
         </div>
         <div className="w-[80%] grid grid-cols-2 md:grid-cols-3 justify-items-center">
           {albums.slice(0, 6).map((album) => (
-            <Link href={`/discography/${album.name}`} key={album.id} className="relative w-[360px] h-[360px] my-4 mx-2 group">
-              <div className="w-full h-full z-10 flex flex-col justify-center items-center bg-transparent">
-                <h1 className="z-30 text-2xl font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
-                  ease-in-out"
-                >
-                  {album.name}
-                </h1>
-                <p className="z-30 text-base font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
-                  ease-in-out">
-                  {album.releaseDate}
-                </p>
-                <div className="absolute z-20 bg-white w-full h-full group-hover:blur-sm transition-all duration-250 ease-in-out
-                  opacity-0 group-hover:opacity-20"
-                ></div>
-              </div>
-              <Image src={album.img} alt={album.name} fill={true}
-                className="group-hover:blur-sm transition-all duration-250 ease-in-out"
-              />
-            </Link>
+            <Discography album={album} admin={false} key={album.id} />
           ))}
         </div>
         <Link
