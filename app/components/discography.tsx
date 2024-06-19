@@ -9,7 +9,7 @@ const Discography = ({
   admin: boolean,
 }) => {
   return (
-    <Link href={admin ? `/admin/discography/edit/${album.name}` : `/discography/${album.name}`} 
+    <Link href={admin ? `/admin/discography/detail/${album.id}` : `/discography/${album.name}`} 
       className="relative w-[360px] h-[360px] my-4 mx-2 group"
     >
       <div className="w-full h-full z-10 flex flex-col justify-center items-center bg-transparent">
