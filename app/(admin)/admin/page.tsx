@@ -30,20 +30,20 @@ const Page = () => {
   const { getDoc } = useGetAllDocuments()
 
   useEffect(() => {
-    getDoc("discography").then(data => setDiscography(data))
+    getDoc("discography", "releaseDate", "desc").then(data => setDiscography(data))
   }, [])
 
   return (
     <main>
       {user ? (
-        <div className="min-h-screen mx-16">
+        <div className="min-h-screen mx-4">
           <Link href="/admin/discography/add">
             <button type="button" className="bg-primary-pink p-2 rounded text-white mt-8">
               Add Discography
               <FontAwesomeIcon icon={faPlus} size="1x" style={{ color: "#ffff" }} className="ml-2" />
             </button>
           </Link>
-          <div className="w-[80%] grid grid-cols-2 md:grid-cols-3 justify-items-center">
+          <div className="grid grid-cols-4">
             {discography.map((item: any) => <Discography album={item} admin={true} key={item.id} />)}
           </div>
         </div>
