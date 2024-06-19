@@ -1,7 +1,11 @@
+"use client"
+
 import { bungee } from "@/app/assets/fonts"
 import Link from "next/link"
 import Image from "next/image"
 import Discography from "../components/discography"
+import { useEffect, useState } from "react"
+import { useGetAllDocuments } from "../utils/useGetAllDocuments"
 
 export default function Page() {
   const members = [
@@ -60,113 +64,13 @@ export default function Page() {
       link: "/members/tzuyu"
     }
   ]
+  
+  const [discography, setDiscography] = useState<any>([])
+  const { getAllDocuments } = useGetAllDocuments()
 
-  const albums = [
-    {
-      id: 1,
-      name: "Zone",
-      altTitle: "Jihyo's 1st Mini Album",
-      image: "/alb-zone.jpg",
-      releaseDate: "2023-08-18",
-      numOfTrack: 7
-    },
-    {
-      id: 2,
-      name: "Ready To Be",
-      altTitle: "12th Mini Album",
-      image: "/alb-rtb.jpg",
-      releaseDate: "2023-03-10",
-      numOfTrack: 7
-    },
-    {
-      id: 3,
-      name: "Between 1&2",
-      altTitle: "11th Mini Album",
-      image: "/alb-between.jpg",
-      releaseDate: "2022-08-26",
-      numOfTrack: 7
-    },
-    {
-      id: 4,
-      name: "Im Nayeon",
-      altTitle: "Nayeon's 1st Mini Album",
-      image: "/alb-nayeon.jpg",
-      releaseDate: "2022-06-24",
-      numOfTrack: 7
-    },
-    {
-      id: 5,
-      name: "Formula of Love: O+T=<3",
-      altTitle: "3rd Full Album",
-      image: "/alb-fol.jpg",
-      releaseDate: "2021-11-12",
-      numOfTrack: 16
-    },
-    {
-      id: 6,
-      name: "Taste of Love",
-      altTitle: "10th Mini Album",
-      image: "/alb-tol.jpg",
-      releaseDate: "2021-06-09",
-      numOfTrack: 6
-    },
-    {
-      id: 7,
-      name: "Eyes Wide Open",
-      altTitle: "2nd Full Album",
-      image: "/alb-tol.jpg",
-      releaseDate: "2020-10-26",
-      numOfTrack: 13
-    },
-    {
-      id: 8,
-      name: "More & More",
-      altTitle: "9th Mini Album",
-      image: "/alb-tol.jpg",
-      releaseDate: "2020-06-01",
-      numOfTrack: 7
-    },
-    {
-      id: 9,
-      name: "Feel Special",
-      altTitle: "8th Mini Album",
-      image: "/alb-tol.jpg",
-      releaseDate: "2019-09-23",
-      numOfTrack: 7
-    },
-    {
-      id: 10,
-      name: "Fancy You",
-      altTitle: "7th Mini Album",
-      image: "/alb-tol.jpg",
-      releaseDate: "2019-04-22",
-      numOfTrack: 6
-    },
-    {
-      id: 11,
-      name: `The Year of "YES"`,
-      altTitle: "3rd Special Album",
-      image: "/alb-tol.jpg",
-      releaseDate: "2018-12-12",
-      numOfTrack: 9
-    },
-    {
-      id: 12,
-      name: "YES or YES",
-      altTitle: "6th Mini Album",
-      image: "/alb-tol.jpg",
-      releaseDate: "2018-11-05",
-      numOfTrack: 7
-    },
-    {
-      id: 13,
-      name: "Summer Nights",
-      altTitle: "2nd Special Album",
-      image: "/alb-tol.jpg",
-      releaseDate: "2018-07-09",
-      numOfTrack: 9
-    }
-  ]
+  useEffect(() => {
+    getAllDocuments("discography", "releaseDate", "desc", 6).then(data => setDiscography(data))
+  }, [])
 
   return (
     <main className="">
@@ -256,7 +160,7 @@ export default function Page() {
           </h1>
         </div>
         <div className="w-[80%] grid grid-cols-2 md:grid-cols-3 justify-items-center">
-          {albums.slice(0, 6).map((album) => (
+          {discography.map((album: any) => (
             <Discography album={album} admin={false} key={album.id} />
           ))}
         </div>
