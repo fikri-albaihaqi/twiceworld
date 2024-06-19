@@ -2,8 +2,11 @@
 
 import { useState } from "react"
 import { useAddDocument } from '@/app/utils/useAddDocument'
+import { useRouter } from "next/navigation"
 
 const Page = () => {
+  const router = useRouter()
+
   const [form, setForm] = useState({
     name: "",
     alternateName: "",
@@ -12,7 +15,6 @@ const Page = () => {
     type: "",
     language: "",
     video: "",
-    trackNumber: 0,
     description: "",
   })
 
@@ -23,7 +25,12 @@ const Page = () => {
   const addDocument = useAddDocument()
 
   const handleInput = () => {
-    addDocument("discography", form)
+    try {
+      addDocument("discography", form)
+      router.push("/admin")
+    } catch(error) {
+      alert(error)
+    }
   }
 
   return (
@@ -101,17 +108,6 @@ const Page = () => {
             value={form.video}
             onChange={onChange}
             placeholder="Title track YouTube link"
-            className="px-2"
-          />
-        </div>
-        <div className="flex justify-between my-2">
-          <label>Track Number</label>
-          <input
-            type="number"
-            name="trackNumber"
-            value={form.trackNumber}
-            onChange={onChange}
-            placeholder="Total tracks number"
             className="px-2"
           />
         </div>
