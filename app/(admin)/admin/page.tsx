@@ -27,10 +27,10 @@ const Page = () => {
   }, [])
 
   const [discography, setDiscography] = useState<any>([])
-  const { getDoc } = useGetAllDocuments()
+  const { getAllDocuments } = useGetAllDocuments()
 
   useEffect(() => {
-    getDoc("discography", "releaseDate", "desc").then(data => setDiscography(data))
+    getAllDocuments("discography", "releaseDate", "desc").then(data => setDiscography(data))
   }, [])
 
   return (
