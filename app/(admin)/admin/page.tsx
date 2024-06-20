@@ -1,12 +1,10 @@
 "use client"
 
 import Discography from "@/app/components/discography"
-import { auth } from "@/app/utils/firebaseConfig"
 import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const Page = () => {
