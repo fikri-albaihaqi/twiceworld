@@ -50,10 +50,10 @@ const Page = () => {
                   <td>{song.title}</td>
                   <td>{convertSongDuration(song.duration)}</td>
                   <td>
-                    <Link href={`/admin/song/edit/${song.id}`} className="bg-primary-pink mx-px p-2 rounded text-white mt-8">
+                    <Link href={`/admin/song/edit/${song.id}`} className="bg-primary-pink mx-px p-2 rounded text-white">
                       <button>Edit</button>
                     </Link>
-                    <button className="bg-red-700 mx-px p-2 rounded text-white mt-8">Delete</button>
+                    <button className="bg-red-700 mx-px p-2 rounded text-white">Delete</button>
                   </td>
                 </tr>
               )}
