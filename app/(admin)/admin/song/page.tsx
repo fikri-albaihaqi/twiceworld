@@ -2,7 +2,7 @@
 
 import db from "@/app/utils/firestore"
 import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
-import { collection, orderBy, query } from "@firebase/firestore"
+import { collection, deleteDoc, doc, orderBy, query } from "@firebase/firestore"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
@@ -24,6 +24,15 @@ const Page = () => {
     let extraSeconds: any = duration % 60
     extraSeconds = extraSeconds< 10 ? "0" + extraSeconds : extraSeconds
     return minutes + ":" + extraSeconds
+  }
+
+  const deleteSong = async (id: string) => {
+    try {
+      await deleteDoc(doc(db, "songs", id))
+      location.reload()
+    } catch (e) {
+      alert(e)
+    }
   }
 
   return (
@@ -53,7 +62,7 @@ const Page = () => {
                     <Link href={`/admin/song/edit/${song.id}`} className="bg-primary-pink mx-px p-2 rounded text-white">
                       <button>Edit</button>
                     </Link>
-                    <button className="bg-red-700 mx-px p-2 rounded text-white">Delete</button>
+                    <button onClick={() => deleteSong(song.id)} className="bg-red-700 mx-px p-2 rounded text-white">Delete</button>
                   </td>
                 </tr>
               )}
