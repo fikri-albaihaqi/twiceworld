@@ -1,7 +1,9 @@
 "use client"
 
 import Discography from "@/app/components/discography"
+import db from "@/app/utils/firestore"
 import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
+import { collection, orderBy, query } from "@firebase/firestore"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
@@ -12,8 +14,11 @@ const Page = () => {
   const [discography, setDiscography] = useState<any>([])
   const { getAllDocuments } = useGetAllDocuments()
 
+  const collectionRef = collection(db, "discography")
+  const dbQuery = query(collectionRef, orderBy("releaseDate", "desc"))
+
   useEffect(() => {
-    getAllDocuments("discography", "releaseDate", "desc").then(data => setDiscography(data))
+    getAllDocuments(dbQuery).then(data => setDiscography(data))
   }, [])
 
   return (

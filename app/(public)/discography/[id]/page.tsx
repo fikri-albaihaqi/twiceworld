@@ -1,7 +1,10 @@
 "use client"
 
+import db from "@/app/utils/firestore"
+import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
 import { useGetDocument } from "@/app/utils/useGetDocument"
 import { useGetSubcollection } from "@/app/utils/useGetSubcollection"
+import { collection, query, where } from "@firebase/firestore"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -14,15 +17,22 @@ const Page = (
   }
 ) => {
   const { getDocument } = useGetDocument()
-  const { getSubcollection } = useGetSubcollection()
+  const { getAllDocuments } = useGetAllDocuments()
 
   const [discography, setDiscography] = useState<any>()
   const [tracks, setTracks] = useState<any>()
 
   useEffect(() => {
     getDocument("discography", params.id).then(data => setDiscography(data))
-    getSubcollection("discography", params.id, "tracks").then(data => setTracks(data))
   }, [])
+
+  useEffect(() => {
+    if (discography) {
+      const collectionRef = collection(db, "songs")
+      const dbQuery = query(collectionRef, where("albums", "array-contains", discography?.name))
+      getAllDocuments(dbQuery).then(data => setTracks(data))
+    }
+  }, [discography])
 
   return (
     <main>

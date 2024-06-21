@@ -6,6 +6,8 @@ import Image from "next/image"
 import Discography from "../components/discography"
 import { useEffect, useState } from "react"
 import { useGetAllDocuments } from "../utils/useGetAllDocuments"
+import { collection, limit, orderBy, query } from "@firebase/firestore"
+import db from "../utils/firestore"
 
 export default function Page() {
   const members = [
@@ -68,8 +70,11 @@ export default function Page() {
   const [discography, setDiscography] = useState<any>([])
   const { getAllDocuments } = useGetAllDocuments()
 
+  const collectionRef = collection(db, "discography")
+  const dbQuery = query(collectionRef, orderBy("releaseDate", "desc"), limit(6))
+
   useEffect(() => {
-    getAllDocuments("discography", "releaseDate", "desc", 6).then(data => setDiscography(data))
+    getAllDocuments(dbQuery).then(data => setDiscography(data))
   }, [])
 
   return (

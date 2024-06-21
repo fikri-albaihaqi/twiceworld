@@ -5,14 +5,19 @@ import Link from "next/link";
 import styles from "@/app/(public)/discography/styles.module.css"
 import { useEffect, useState } from "react";
 import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments";
+import { collection, orderBy, query } from "@firebase/firestore";
+import db from "@/app/utils/firestore";
 
 export default function Page() {
   const [discography, setDiscography] = useState<any>([])
   const { getAllDocuments } = useGetAllDocuments()
   const [image, setImage] = useState<string>("")
 
+  const collectionRef = collection(db, "discography")
+  const dbQuery = query(collectionRef, orderBy("releaseDate", "desc"))
+
   useEffect(() => {
-    getAllDocuments("discography", "releaseDate", "desc").then(data => setDiscography(data))
+    getAllDocuments(dbQuery).then(data => setDiscography(data))
   }, [])
 
   const handleMouseEnter = (imageSource: string) => {

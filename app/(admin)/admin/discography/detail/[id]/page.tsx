@@ -1,7 +1,10 @@
 "use client"
 
+import db from "@/app/utils/firestore"
+import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
 import { useGetDocument } from "@/app/utils/useGetDocument"
 import { useGetSubcollection } from "@/app/utils/useGetSubcollection"
+import { collection, orderBy, query, where } from "@firebase/firestore"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -14,15 +17,22 @@ const Page = (
   }
 ) => {
   const { getDocument } = useGetDocument()
-  const { getSubcollection } = useGetSubcollection()
+  const { getAllDocuments } = useGetAllDocuments()
 
   const [discography, setDiscography] = useState<any>()
   const [tracks, setTracks] = useState<any>()
 
   useEffect(() => {
     getDocument("discography", params.id).then(data => setDiscography(data))
-    getSubcollection("discography", params.id, "tracks").then(data => setTracks(data))
   }, [])
+
+  useEffect(() => {
+    if (discography) {
+      const collectionRef = collection(db, "songs")
+      const dbQuery = query(collectionRef, where("albums", "array-contains", discography?.name))
+      getAllDocuments(dbQuery).then(data => setTracks(data))
+    }
+  }, [discography])
 
   return (
     <main>
@@ -61,7 +71,7 @@ const Page = (
           <div className="mt-8 mx-16">
             <h2 className="text-2xl text-primary-pink font-bold">TRACK LIST</h2>
             <ol className="list-decimal ml-4 mb-8">
-              {tracks?.map((track: any) => <li>{track.title}</li>)}
+              {tracks?.sort().map((track: any) => <li>{track.title}</li>)}
             </ol>
             <Link href="/admin/discography/add/track" className="bg-primary-pink p-2 rounded text-white">
               Add Track
