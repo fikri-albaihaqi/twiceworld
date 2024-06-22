@@ -43,6 +43,9 @@ const AdminMenu = () => {
           <Link href="/admin/song">
             <li className="mx-2 hover:text-primary-pink">Song</li>
           </Link>
+          <Link href="/admin/history">
+            <li className="mx-2 hover:text-primary-pink">History</li>
+          </Link>
         </ul>
       </div>
       <button onClick={handleLogout} className="">
