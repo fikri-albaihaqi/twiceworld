@@ -4,33 +4,20 @@ import { useEffect, useState } from "react"
 import { bungee } from "../../assets/fonts"
 import History from "../../components/history"
 import Image from "next/image"
-import { DocumentData, QuerySnapshot, collection, getDocs, onSnapshot } from "@firebase/firestore"
+import { DocumentData, QuerySnapshot, collection, getDocs, onSnapshot, orderBy, query } from "@firebase/firestore"
 import db from "../../utils/firestore"
+import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
 
 export default function Page() {
-  const histories = [
-    {
-      id: 1,
-      title: "PRE-DEBUT",
-      date: "2015",
-      img: "/sixteen-1.png",
-      description: "JYP's Brand new girl group 'TWICE' release debut album 'THE STORY BEGINS'TWICE will present vibrant energy with title track 'Like OOH-AHH'Average age is 18, They will take up with assertive attractiveness. - JYP Brand new girl group 'TWICE' release debut album 'THE STORY BEGINS' - Present the brand new genre \"\Color Pop\"\ which is unique color of TWICE - Once with superb music, Twice with best performance,Have great willingness to present the highest touching to the fans",
-    },
-    {
-      id: 2,
-      title: "THE DEBUT",
-      date: "2015",
-      img: "/the-story-begins-1.png",
-      description: "JYP's Brand new girl group 'TWICE' release debut album 'THE STORY BEGINS'TWICE will present vibrant energy with title track 'Like OOH-AHH'Average age is 18, They will take up with assertive attractiveness. - JYP Brand new girl group 'TWICE' release debut album 'THE STORY BEGINS' - Present the brand new genre \"\Color Pop\"\ which is unique color of TWICE - Once with superb music, Twice with best performance,Have great willingness to present the highest touching to the fans",
-    },
-    {
-      id: 3,
-      title: "THE FIRST COMEBACK",
-      date: "2016",
-      img: "/sixteen-1.png",
-      description: "JYP's Brand new girl group 'TWICE' release debut album 'THE STORY BEGINS'TWICE will present vibrant energy with title track 'Like OOH-AHH'Average age is 18, They will take up with assertive attractiveness. - JYP Brand new girl group 'TWICE' release debut album 'THE STORY BEGINS' - Present the brand new genre \"\Color Pop\"\ which is unique color of TWICE - Once with superb music, Twice with best performance,Have great willingness to present the highest touching to the fans",
-    }
-  ]
+  const [histories, setHistories] = useState<any>([])
+  const { getAllDocuments } = useGetAllDocuments()
+
+  const collectionRef = collection(db, "histories")
+  const dbQuery = query(collectionRef, orderBy("year", "asc"))
+
+  useEffect(() => {
+    getAllDocuments(dbQuery).then(data => setHistories(data))
+  }, [])
 
   return (
     <main className="flex flex-col overflow-hidden">
@@ -44,13 +31,13 @@ export default function Page() {
       </header>
 
       <section className="mx-4 md:mx-16">
-        {histories?.map((history) => (
+        {histories?.map((history: any, index: number) => (
           <History
-            key={history.id}
-            id={history.id}
+            key={history}
+            order={index}
             title={history.title}
-            date={history.date}
-            img={history.img}
+            year={history.year}
+            img={history.image}
             description={history.description}
           />
         ))}
