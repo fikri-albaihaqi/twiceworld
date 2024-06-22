@@ -50,6 +50,7 @@ const Page = () => {
               <tr>
                 <th className="text-start">Title</th>
                 <th className="text-start">Duration</th>
+                <th className="text-start">Albums</th>
                 <th className="text-start">Action</th>
               </tr>
             </thead>
@@ -58,6 +59,9 @@ const Page = () => {
                 <tr>
                   <td>{song.title}</td>
                   <td>{convertSongDuration(song.duration)}</td>
+                  <td>
+                    {song.albums.map((album: any) => <>{album} <br /></>)}
+                  </td>
                   <td>
                     <Link href={`/admin/song/edit/${song.id}`} className="bg-primary-pink mx-px p-2 rounded text-white">
                       <button>Edit</button>
