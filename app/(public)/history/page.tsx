@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { bungee } from "../../assets/fonts"
 import History from "../../components/history"
 import Image from "next/image"
-import { DocumentData, QuerySnapshot, collection, getDocs, onSnapshot, orderBy, query } from "@firebase/firestore"
+import { collection, orderBy, query } from "@firebase/firestore"
 import db from "../../utils/firestore"
 import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
 
@@ -21,7 +21,7 @@ export default function Page() {
 
   return (
     <main className="flex flex-col overflow-hidden">
-      <header className="relative -z-10 h-[560px] md:h-[440px] lg:h-[640px] xl:h-[900px]">
+      <header className="relative -z-10 h-[560px] md:h-[440px] lg:h-[640px] xl:h-[900px] 2xl:h-[1280px]">
         <Image src="/history-header.png" alt="Twice Ready To Be Concert in Las Vegas" fill={true}
           className="hidden md:block object-contain object-top"
         />

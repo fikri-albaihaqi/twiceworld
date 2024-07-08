@@ -79,7 +79,7 @@ export default function Page() {
 
   return (
     <main className="">
-      <header className="relative -z-10 h-[560px] md:h-[440px] lg:h-[640px] xl:h-[900px]">
+      <header className="relative -z-10 h-[560px] md:h-[440px] lg:h-[640px] xl:h-[900px] 2xl:h-[1280px]">
         <Image src="/header.png" alt="Header Image with twice members in it" fill={true}
           className="hidden md:block -z-10 object-contain object-top"
         />
