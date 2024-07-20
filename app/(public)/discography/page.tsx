@@ -11,7 +11,7 @@ import db from "@/app/utils/firestore";
 export default function Page() {
   const [discography, setDiscography] = useState<any>([])
   const { getAllDocuments } = useGetAllDocuments()
-  const [image, setImage] = useState<string>("")
+  const [image, setImage] = useState<string>("/the-story-begins.jpg")
 
   const collectionRef = collection(db, "discography")
   const dbQuery = query(collectionRef, orderBy("releaseDate", "desc"))
