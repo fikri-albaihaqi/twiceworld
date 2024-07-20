@@ -131,8 +131,11 @@ export default function Page() {
             THE MEMBERS
           </h1>
         </div>
+        <Image src="/red-string-xl.svg" alt="The red string of fate connecting all twice member" width={1200} height={0}
+          className="hidden 2xl:block absolute -z-10"
+        />
         <Image src="/red-string.svg" alt="The red string of fate connecting all twice member" width={800} height={0}
-          className="hidden lg:block absolute -z-10"
+          className="hidden lg:block 2xl:hidden absolute -z-10"
         />
         <Image src="/red-string-md.svg" alt="The red string of fate connecting all twice member" width={600} height={0}
           className="hidden md:block lg:hidden absolute -z-10"
