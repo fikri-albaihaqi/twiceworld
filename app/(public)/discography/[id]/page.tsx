@@ -34,8 +34,6 @@ const Page = (
     }
   }, [discography])
 
-  console.log(tracks)
-
   return (
     <main>
       <div className="w-screen h-max flex flex-col xl:flex-row">

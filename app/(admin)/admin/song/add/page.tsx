@@ -8,19 +8,28 @@ const Page = () => {
   const router = useRouter()
   const [albumOrder, setAlbumOrder] = useState({
     album: "",
-    order: "",
+    position: "",
   })
+  const [credit, setCredit] = useState<any>({
+    memberName: "",
+  })
+  const [credits, setCredits] = useState<any>([])
   const [albums, setAlbums] = useState<any>([])
   const [orders, setOrders] = useState<any>([])
   const [form, setForm] = useState({
     title: "",
     duration: "",
+    memberCredits: [],
     albums: [],
     order: []
   })
 
   const onFormChange = (e: { target: { name: any; value: any } }) => {
     setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const onCreditChange = (e: { target: { name: any; value: any } }) => {
+    setCredit({ ...credit, [e.target.name]: e.target.value })
   }
 
   const onAlbumFormChange = (e: { target: { name: any; value: any } }) => {
@@ -36,8 +45,11 @@ const Page = () => {
 
       let albumsArray = form.albums.slice()
       albumsArray = albums
-      
-      const newForm = { ...form, albums: albumsArray, position: orderArray }
+
+      let creditsArray = form.memberCredits.slice()
+      creditsArray = credits
+
+      const newForm = { ...form, albums: albumsArray, memberCredits: creditsArray, order: orderArray }
       addDocument("songs", newForm)
 
       router.push("/admin/song")
@@ -72,6 +84,31 @@ const Page = () => {
             className="px-2"
           />
         </div>
+        <div className=" flex flex-col my-2">
+          <div className="flex justify-between">
+            <label>Member Credits</label>
+            <input
+              type="text"
+              name="memberName"
+              value={credit.memberName}
+              onChange={onCreditChange}
+              placeholder="ex: Son Chaeyoung"
+              className="px-2"
+            />
+          </div>
+          <button onClick={(e) => {
+            e.preventDefault()
+            setCredits([
+              ...credits,
+              credit
+            ])
+          }} className="w-max self-end bg-primary-pink text-white p-2 mt-2 rounded">
+            Add
+          </button>
+          <ol className="self-end list-decimal">
+            {credits?.map((item: any) => <li key={item.memberName}>{item.memberName}</li>)}
+          </ol>
+        </div>
         <div className="flex justify-between my-2">
           <label>Albums</label>
           <div className="flex flex-col">
@@ -80,7 +117,7 @@ const Page = () => {
                 <span>Album Name</span>
                 <input
                   type="text"
-                  name="name"
+                  name="album"
                   value={albumOrder.album}
                   onChange={onAlbumFormChange}
                   placeholder="ex: The Story Begins"
@@ -92,8 +129,8 @@ const Page = () => {
                 <span>Song Order</span>
                 <input
                   type="text"
-                  name="order"
-                  value={albumOrder.order}
+                  name="position"
+                  value={albumOrder.position}
                   onChange={onAlbumFormChange}
                   placeholder="Song's order in the album"
                   className="px-2"
@@ -110,12 +147,12 @@ const Page = () => {
                 ...albums,
                 albumOrder.album
               ])
-            }} className="w-max bg-primary-pink text-white p-2 mt-2 rounded">
+            }} className="w-max self-end bg-primary-pink text-white p-2 mt-2 rounded">
               Add Album
             </button>
-            <ul>
-              {orders?.map((item: any) => <li key={item.name}>{item.name}</li>)}
-            </ul>
+            <ol className="list-decimal">
+              {orders?.map((item: any) => <li key={item.album}>{item.album}</li>)}
+            </ol>
           </div>
         </div>
         <button onClick={handleInput} type="button" className="bg-primary-pink text-white w-min p-2 mt-8 rounded">
