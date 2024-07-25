@@ -3,10 +3,9 @@
 import db from "@/app/utils/firestore"
 import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
 import { useGetDocument } from "@/app/utils/useGetDocument"
-import { useGetSubcollection } from "@/app/utils/useGetSubcollection"
+import useSortTrack from "@/app/utils/useSortTracks"
 import { collection, query, where } from "@firebase/firestore"
 import Image from "next/image"
-import Link from "next/link"
 import { useEffect, useState } from "react"
 
 const Page = (
@@ -21,6 +20,7 @@ const Page = (
 
   const [discography, setDiscography] = useState<any>()
   const [tracks, setTracks] = useState<any>()
+  const sortedTracks = useSortTrack(tracks, discography)
 
   useEffect(() => {
     getDocument("discography", params.id).then(data => setDiscography(data))
@@ -33,6 +33,8 @@ const Page = (
       getAllDocuments(dbQuery).then(data => setTracks(data))
     }
   }, [discography])
+
+  console.log(tracks)
 
   return (
     <main>
@@ -65,7 +67,10 @@ const Page = (
           <div className="mt-8 mx-16">
             <h2 className="text-2xl text-primary-pink font-bold">TRACK LIST</h2>
             <ol className="list-decimal ml-4 mb-8">
-              {tracks?.map((track: any) => <li>{track.title}</li>)}
+              {
+                sortedTracks.length > 0 ? sortedTracks.map((track: any) => <li key={track?.position}>{track?.album}</li>) :
+                  <span></span>
+              }
             </ol>
           </div>
         </div>

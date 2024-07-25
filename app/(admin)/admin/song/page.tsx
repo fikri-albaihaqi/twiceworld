@@ -56,7 +56,7 @@ const Page = () => {
             </thead>
             <tbody>
               {songs?.map((song: any) =>
-                <tr>
+                <tr key={song.id}>
                   <td>{song.title}</td>
                   <td>{convertSongDuration(song.duration)}</td>
                   <td>

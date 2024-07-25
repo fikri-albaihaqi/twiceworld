@@ -6,30 +6,40 @@ import { useRouter } from "next/navigation"
 
 const Page = () => {
   const router = useRouter()
-
-  const [album, setAlbum] = useState("")
+  const [albumOrder, setAlbumOrder] = useState({
+    album: "",
+    order: "",
+  })
   const [albums, setAlbums] = useState<any>([])
+  const [orders, setOrders] = useState<any>([])
   const [form, setForm] = useState({
     title: "",
     duration: "",
-    albums: []
+    albums: [],
+    order: []
   })
 
-  const onChange = (e: { target: { name: any; value: any } }) => {
-    setForm({ ...form, [e.target.name]: e.target.value})
+  const onFormChange = (e: { target: { name: any; value: any } }) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const onAlbumFormChange = (e: { target: { name: any; value: any } }) => {
+    setAlbumOrder({ ...albumOrder, [e.target.name]: e.target.value })
   }
 
   const addDocument = useAddDocument()
 
   const handleInput = () => {
     try {
-      let array = form.albums.slice()
-      array = albums
+      let orderArray = form.order.slice()
+      orderArray = orders
+
+      let albumsArray = form.albums.slice()
+      albumsArray = albums
       
-      const newForm = {...form, albums: array}
-      
+      const newForm = { ...form, albums: albumsArray, position: orderArray }
       addDocument("songs", newForm)
-      
+
       router.push("/admin/song")
     } catch (error) {
       alert(error)
@@ -46,7 +56,7 @@ const Page = () => {
             type="text"
             name="title"
             value={form.title}
-            onChange={onChange}
+            onChange={onFormChange}
             placeholder="ex: Feel Special"
             className="px-2"
           />
@@ -57,7 +67,7 @@ const Page = () => {
             type="number"
             name="duration"
             value={form.duration}
-            onChange={onChange}
+            onChange={onFormChange}
             placeholder="Total duration in seconds"
             className="px-2"
           />
@@ -65,25 +75,46 @@ const Page = () => {
         <div className="flex justify-between my-2">
           <label>Albums</label>
           <div className="flex flex-col">
-            <input
-              type="text"
-              name="album"
-              value={album}
-              onChange={e => setAlbum(e.target.value)}
-              placeholder="ex: The Story Begins"
-              className="px-2"
-            />
+            <div className="flex">
+              <div className="flex flex-col mx-2">
+                <span>Album Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  value={albumOrder.album}
+                  onChange={onAlbumFormChange}
+                  placeholder="ex: The Story Begins"
+                  className="px-2"
+                />
+              </div>
+
+              <div className="flex flex-col mx-2">
+                <span>Song Order</span>
+                <input
+                  type="text"
+                  name="order"
+                  value={albumOrder.order}
+                  onChange={onAlbumFormChange}
+                  placeholder="Song's order in the album"
+                  className="px-2"
+                />
+              </div>
+            </div>
             <button onClick={(e) => {
               e.preventDefault()
+              setOrders([
+                ...orders,
+                albumOrder
+              ])
               setAlbums([
                 ...albums,
-                album
+                albumOrder.album
               ])
             }} className="w-max bg-primary-pink text-white p-2 mt-2 rounded">
               Add Album
             </button>
             <ul>
-              {albums.map((item: any) => <li>{item}</li>)}
+              {orders?.map((item: any) => <li key={item.name}>{item.name}</li>)}
             </ul>
           </div>
         </div>

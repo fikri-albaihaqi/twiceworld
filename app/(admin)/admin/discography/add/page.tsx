@@ -8,7 +8,7 @@ const Page = () => {
   const router = useRouter()
 
   const [form, setForm] = useState({
-    name: "",
+    album: "",
     alternateName: "",
     image: "",
     releaseDate: "",
