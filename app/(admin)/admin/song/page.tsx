@@ -2,27 +2,48 @@
 
 import db from "@/app/utils/firestore"
 import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
-import { collection, deleteDoc, doc, orderBy, query } from "@firebase/firestore"
+import { collection, deleteDoc, doc, endBefore, limit, orderBy, query, startAfter } from "@firebase/firestore"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
 const Page = () => {
+  const [page, setPage] = useState<number>(1)
+  const pageSize = 20;
+
   const [songs, setSongs] = useState<any>([])
   const { getAllDocuments } = useGetAllDocuments()
 
   const collectionRef = collection(db, "songs")
-  const dbQuery = query(collectionRef, orderBy("title", "asc"))
+  const dbQuery = query(collectionRef, orderBy("title", "asc"), limit(pageSize))
 
   useEffect(() => {
     getAllDocuments(dbQuery).then(data => setSongs(data))
   }, [])
 
+  const nextPage = ({ item }: any) => {
+    if (songs.length === 0) {
+      alert("Thats all the song for now!")
+    } else {
+      const collectionRef = collection(db, "songs")
+      const dbQuery = query(collectionRef, orderBy("title", "asc"), limit(pageSize), startAfter(item.title))
+      getAllDocuments(dbQuery).then(data => setSongs(data))
+      setPage(page + 1)
+    }
+  }
+
+  const previousPage = ({ item }: any) => {
+    const collectionRef = collection(db, "songs")
+    const dbQuery = query(collectionRef, orderBy("title", "asc"), limit(pageSize), endBefore(item.title))
+    getAllDocuments(dbQuery).then(data => setSongs(data))
+    setPage(page - 1)
+  }
+
   const convertSongDuration = (duration: number) => {
     let minutes = Math.floor(duration / 60)
     let extraSeconds: any = duration % 60
-    extraSeconds = extraSeconds< 10 ? "0" + extraSeconds : extraSeconds
+    extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds
     return minutes + ":" + extraSeconds
   }
 
@@ -72,6 +93,15 @@ const Page = () => {
               )}
             </tbody>
           </table>
+          <div className="flex justify-center mt-8">
+            {
+              page === 1 ? '' : <button onClick={() => previousPage({ item: songs[0] })} className="mx-2">Previous</button>
+            }
+
+            {
+              songs.length < 20 ? '' : <button onClick={() => nextPage({ item: songs[songs.length - 1] })} className="mx-2">Next</button>
+            }
+          </div>
         </div>
       </div>
     </main>
