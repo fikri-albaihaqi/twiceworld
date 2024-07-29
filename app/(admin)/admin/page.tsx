@@ -50,7 +50,7 @@ const Page = () => {
             <FontAwesomeIcon icon={faPlus} size="1x" style={{ color: "#ffff" }} className="ml-2" />
           </button>
         </Link>
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {discography.map((item: any) => <Discography album={item} admin={true} key={item.id} />)}
         </div>
         <div className="flex justify-center mt-8">

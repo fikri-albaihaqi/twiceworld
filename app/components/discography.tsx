@@ -10,7 +10,7 @@ const Discography = ({
 }) => {
   return (
     <Link href={admin ? `/admin/discography/detail/${album.id}` : `/discography/${album.id}`} 
-      className="relative w-[360px] h-[360px] my-4 mx-2 group"
+      className="relative w-[150px] h-[150px] md:w-[200px] md:h-[200px] lg:w-[240px] lg:h-[240px] xl:w-[300px] xl:h-[300px] 2xl:w-[460px] 2xl:h-[460px] my-4 mx-2 group"
     >
       <div className="w-full h-full z-10 flex flex-col justify-center items-center bg-transparent">
         <h1 className="z-30 text-center text-2xl font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
