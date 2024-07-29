@@ -13,7 +13,7 @@ const Discography = ({
       className="relative w-[360px] h-[360px] my-4 mx-2 group"
     >
       <div className="w-full h-full z-10 flex flex-col justify-center items-center bg-transparent">
-        <h1 className="z-30 text-2xl font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
+        <h1 className="z-30 text-center text-2xl font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
                   ease-in-out"
         >
           {album.name}
