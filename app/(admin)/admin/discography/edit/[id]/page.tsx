@@ -16,6 +16,7 @@ const Page = ({
   const [discography, setDiscography] = useState<any>({
     name: "",
     alternateName: "",
+    totalTrack: "",
     image: "",
     releaseDate: "",
     type: "",
@@ -66,6 +67,17 @@ const Page = ({
             value={discography?.alternateName}
             onChange={onChange}
             placeholder="ex: The 5th Mini Album"
+            className="px-2"
+          />
+        </div>
+        <div className="flex justify-between my-2">
+          <label>Total Track</label>
+          <input
+            type="number"
+            name="totalTrack"
+            value={discography?.totalTrack}
+            onChange={onChange}
+            placeholder="Total track"
             className="px-2"
           />
         </div>

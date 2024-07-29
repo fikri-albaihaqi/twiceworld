@@ -44,7 +44,7 @@ export default function Page() {
             <span
               className={`${styles.detail} text-base text-alternate-black mt-6`}
             >
-              {item.alternateName}
+              {item.alternateName} • {item.totalTrack} TRACKS
             </span>
           </Link>
         ))}

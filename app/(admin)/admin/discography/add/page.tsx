@@ -8,8 +8,9 @@ const Page = () => {
   const router = useRouter()
 
   const [form, setForm] = useState({
-    album: "",
+    name: "",
     alternateName: "",
+    totalTrack: "",
     image: "",
     releaseDate: "",
     type: "",
@@ -56,6 +57,17 @@ const Page = () => {
             value={form.alternateName}
             onChange={onChange}
             placeholder="ex: The 5th Mini Album"
+            className="px-2"
+          />
+        </div>
+        <div className="flex justify-between my-2">
+          <label>Total Track</label>
+          <input
+            type="number"
+            name="totalTrack"
+            value={form.totalTrack}
+            onChange={onChange}
+            placeholder="Total track"
             className="px-2"
           />
         </div>
