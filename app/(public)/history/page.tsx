@@ -13,7 +13,7 @@ export default function Page() {
   const { getAllDocuments } = useGetAllDocuments()
 
   const collectionRef = collection(db, "histories")
-  const dbQuery = query(collectionRef, orderBy("year", "asc"))
+  const dbQuery = query(collectionRef, orderBy("date", "asc"))
 
   useEffect(() => {
     getAllDocuments(dbQuery).then(data => setHistories(data))
@@ -36,7 +36,7 @@ export default function Page() {
             key={history}
             order={index}
             title={history.title}
-            year={history.year}
+            date={history.date}
             img={history.image}
             description={history.description}
           />

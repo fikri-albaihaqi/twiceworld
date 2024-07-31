@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useAddDocument } from '@/app/utils/useAddDocument'
 import { useRouter } from "next/navigation"
 import { useGetDocument } from "@/app/utils/useGetDocument"
 import { useUpdateDocument } from "@/app/utils/useUpdateDocument"
@@ -11,7 +10,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   const [history, setHistory] = useState<any>({
     title: "",
-    year: "",
+    date: "",
     description: "",
     image: "",
   })
@@ -52,13 +51,13 @@ const Page = ({ params }: { params: { id: string } }) => {
           />
         </div>
         <div className="flex justify-between my-2">
-          <label>Year</label>
+          <label>Date</label>
           <input
-            type="number"
-            name="year"
-            value={history.year}
+            type="text"
+            name="date"
+            value={history.date}
             onChange={onChange}
-            placeholder="ex: 2015"
+            placeholder="ex: 2015-10-20"
             className="px-2"
           />
         </div>
@@ -80,7 +79,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             value={history.description}
             onChange={onChange}
             placeholder="History description"
-            className="px-2 h-[150px]"
+            className="px-2 h-[400px] w-[400px]"
           />
         </div>
         <button onClick={handleInput} type="button" className="bg-primary-pink text-white w-min p-2 mt-8 rounded">

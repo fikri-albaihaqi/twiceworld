@@ -9,7 +9,7 @@ const Page = () => {
 
   const [form, setForm] = useState({
     title: "",
-    year: "",
+    date: "",
     description: "",
     image: "",
   })
@@ -45,13 +45,13 @@ const Page = () => {
           />
         </div>
         <div className="flex justify-between my-2">
-          <label>Year</label>
+          <label>Date</label>
           <input
-            type="number"
-            name="year"
-            value={form.year}
+            type="text"
+            name="date"
+            value={form.date}
             onChange={onChange}
-            placeholder="ex: 2015"
+            placeholder="ex: 2015-10-20"
             className="px-2"
           />
         </div>
@@ -73,7 +73,7 @@ const Page = () => {
             value={form.description}
             onChange={onChange}
             placeholder="History description"
-            className="px-2 h-[150px]"
+            className="px-2 h-[400px] w-[400px]"
           />
         </div>
         <button onClick={handleInput} type="button" className="bg-primary-pink text-white w-min p-2 mt-8 rounded">

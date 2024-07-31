@@ -13,7 +13,7 @@ const Page = () => {
   const { getAllDocuments } = useGetAllDocuments()
 
   const collectionRef = collection(db, "histories")
-  const dbQuery = query(collectionRef, orderBy("year", "asc"))
+  const dbQuery = query(collectionRef, orderBy("date", "asc"))
 
   useEffect(() => {
     getAllDocuments(dbQuery).then(data => setHistories(data))
@@ -49,9 +49,9 @@ const Page = () => {
             </thead>
             <tbody>
               {histories?.map((history: any) =>
-                <tr>
+                <tr key={history.title}>
                   <td>{history.title}</td>
-                  <td>{history.year}</td>
+                  <td>{history.date}</td>
                   <td className="truncate">
                     {history.description}
                   </td>
