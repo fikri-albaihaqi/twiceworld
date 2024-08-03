@@ -71,7 +71,7 @@ export default function Page() {
                     </tr>
                     <tr>
                       <td>05</td>
-                      <td>DON'T GIVE UP</td>
+                      <td>DON&apos;T GIVE UP</td>
                       <td className="text-end">2:29</td>
                     </tr>
                     <tr>
@@ -96,7 +96,7 @@ export default function Page() {
                     </tr>
                     <tr>
                       <td>10</td>
-                      <td>HOW U DOIN'</td>
+                      <td>HOW U DOIN&apos;</td>
                       <td className="text-end">2:29</td>
                     </tr>
                   </tbody>

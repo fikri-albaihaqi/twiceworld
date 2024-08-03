@@ -163,7 +163,7 @@ export default function Page() {
                     </tr>
                     <tr>
                       <td>07</td>
-                      <td>TALKIN' ABOUT IT</td>
+                      <td>TALKIN&apos; ABOUT IT</td>
                       <td className="text-end">2:29</td>
                     </tr>
                     <tr>
@@ -173,7 +173,7 @@ export default function Page() {
                     </tr>
                     <tr>
                       <td>09</td>
-                      <td>DON'T WANNA GO BACK</td>
+                      <td>DON&apos;T WANNA GO BACK</td>
                       <td className="text-end">2:29</td>
                     </tr>
                   </tbody>

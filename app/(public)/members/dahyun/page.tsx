@@ -133,7 +133,7 @@ export default function Page() {
                   <tbody>
                     <tr>
                       <td>01</td>
-                      <td>THAT'S ALL I'M SAYING</td>
+                      <td>THAT&apos;S ALL I&apos;M SAYING</td>
                       <td className="text-end">2:29</td>
                     </tr>
                     <tr>

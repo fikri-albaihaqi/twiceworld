@@ -56,7 +56,7 @@ export default function Page() {
                     </tr>
                     <tr>
                       <td>02</td>
-                      <td>IT'S NOT EASY FOR YOU</td>
+                      <td>IT&apos;S NOT EASY FOR YOU</td>
                       <td className="text-end">2:29</td>
                     </tr>
                     <tr>
