@@ -1,8 +1,6 @@
 'use client'
 
 import Image from "next/image"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookF, faInstagram, faTiktok, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { useEffect, useState } from "react"
 import Link from "next/link";
 import styles from './Menu.module.css'
