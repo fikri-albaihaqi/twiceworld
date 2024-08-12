@@ -7,6 +7,11 @@ import Image from "next/image"
 import { collection, orderBy, query } from "@firebase/firestore"
 import db from "../../utils/firestore"
 import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
+import { Swiper, SwiperSlide } from "swiper/react"
+import 'swiper/css';
+import 'swiper/css/navigation'
+import { FreeMode, Navigation } from "swiper/modules"
+import styles from './History.module.css'
 
 export default function Page() {
   const [histories, setHistories] = useState<any>([])
@@ -43,7 +48,7 @@ export default function Page() {
         ))}
       </section>
 
-      <section className="mx-16 mb-32">
+      <section className="ml-4 md:mx-16 mb-32">
         <div className="flex mb-4">
           <h1 className={`text-3xl md:text-4xl text-cream absolute ml-1 text-center ${bungee.className}`}>
             AWARDS
@@ -52,48 +57,65 @@ export default function Page() {
             AWARDS
           </h1>
         </div>
-        <div className="flex">
-          <div className="shrink-0 w-[350px] h-[420px] flex flex-col justify-between bg-white mx-px">
+        <Swiper
+          breakpoints={{
+            320: {
+              slidesPerView: 1
+            },
+            768: {
+              slidesPerView: 3
+            },
+            1280: {
+              slidesPerView: 5
+            }
+          }}
+          freeMode={true}
+          navigation={true}
+          modules={[FreeMode, Navigation]}
+          className="mySwiper h-[420px]"
+          style={styles}
+        >
+          <SwiperSlide className="flex flex-col justify-between bg-white mx-px">
             <Image src="/cup-trophy.svg" alt="Music Shows Trophy" width={48} height={84} className="relative left-8 top-8" />
 
-            <div className="relative left-8 bottom-8">
+            <div className="absolute left-8 bottom-8">
               <h1 className="text-6xl font-bold">121</h1>
               <h6 className="text-lg">Music Shows</h6>
             </div>
-          </div>
-          <div className="shrink-0 w-[350px] h-[420px] flex flex-col justify-between bg-white mx-px">
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col justify-between bg-white mx-px">
             <Image src="/mama-trophy.svg" alt="MAMA Awards Trophy" width={32} height={84} className="relative left-8 top-8" />
 
-            <div className="relative left-8 bottom-8">
+            <div className="absolute left-8 bottom-8">
               <h1 className="text-6xl font-bold">19</h1>
               <h6 className="text-lg">MAMA Awards</h6>
             </div>
-          </div>
-          <div className="shrink-0 w-[350px] h-[420px] flex flex-col justify-between bg-white mx-px">
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col justify-between bg-white mx-px">
             <Image src="/gda-trophy.svg" alt="Golden Disc Awards Trophy" width={41} height={84} className="relative left-8 top-8" />
 
-            <div className="relative left-8 bottom-8">
+            <div className="absolute left-8 bottom-8">
               <h1 className="text-6xl font-bold">12</h1>
               <h6 className="text-lg">Golden Disc Awards</h6>
             </div>
-          </div>
-          <div className="shrink-0 w-[350px] h-[420px] flex flex-col justify-between bg-white mx-px">
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col justify-between bg-white mx-px">
             <Image src="/sma-trophy.svg" alt="Seoul Music Awards Trophy" width={25} height={84} className="relative left-8 top-8" />
 
-            <div className="relative left-8 bottom-8">
+            <div className="absolute left-8 bottom-8">
               <h1 className="text-6xl font-bold">7</h1>
               <h6 className="text-lg">Seoul Music Awards</h6>
             </div>
-          </div>
-          <div className="shrink-0 w-[350px] h-[420px] flex flex-col justify-between bg-white mx-px">
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col justify-between bg-white mx-px">
             <Image src="/mma-trophy.svg" alt="Melon Music Awards Trophy" width={64} height={24} className="relative left-8 top-8" />
 
-            <div className="relative left-8 bottom-8">
+            <div className="absolute left-8 bottom-8">
               <h1 className="text-6xl font-bold">5</h1>
               <h6 className="text-lg">Melon Music Awards</h6>
             </div>
-          </div>
-        </div>
+          </SwiperSlide>
+        </Swiper>
       </section>
     </main>
   )
