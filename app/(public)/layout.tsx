@@ -6,7 +6,10 @@ import Footer from '../components/footer'
 
 export const metadata: Metadata = {
   title: 'Twiceland',
-  description: 'Everything abaout the best Girl Group TWICE!',
+  description: 'Everything about the best K-Pop Girl Group TWICE!',
+  icons: {
+    icon: "/favicon.png",
+  }
 }
 
 export default function RootLayout({

@@ -23,8 +23,8 @@ export default function Menu() {
 
   return (
     <>
-      <Link href="/" className="fixed z-10 top-0 ml-8 py-4 w-[48px] md:w-[64px]" >
-        <Image src="/twice-logo.svg" alt="Twice logo" width={64} height={0} />
+      <Link href="/" className="fixed z-10 top-0 ml-8 py-4" >
+        <Image src="/logo.png" alt="Twice logo" width={100} height={100} />
       </Link>
       <Image src="/blue-sticker.png" alt="Menu background" width={128} height={0} className="fixed top-0 right-0 z-40" />
       <div className="fixed top-0 right-8 z-50 flex py-8">

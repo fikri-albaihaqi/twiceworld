@@ -6,6 +6,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Twiceland Admin Page',
   description: 'Admin Page for adding or editing content in Twiceland',
+  icons: {
+    icon: "/favicon.png",
+  }
 }
 
 const AdminLayout = ({
