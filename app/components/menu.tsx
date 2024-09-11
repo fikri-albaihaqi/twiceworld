@@ -42,8 +42,9 @@ export default function Menu() {
           ></span>
         </div>
       </div>
+
       <div
-        className={`fixed overflow-hidden items-center z-10 h-screen right-0 
+        className={`fixed overflow-hidden items-center z-30 h-screen right-0 
           bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] bg-white ${show ? styles.show : styles.hide}`}
       >
         <Image src="/mail.png" alt="Mail Sticker" width={128} height={0}
