@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DiscographyType } from "../lib/types/firebase";
 
-const Discography = ({ album, admin }: { album: any; admin: boolean }) => {
+const Discography = ({ album, admin }: { album: DiscographyType; admin: boolean }) => {
   return (
     <Link
       href={

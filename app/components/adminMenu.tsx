@@ -1,7 +1,7 @@
 "use client"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { auth } from "../utils/firebaseConfig"
+import { auth } from "../lib/utils/firebaseConfig"
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
 import Image from "next/image"

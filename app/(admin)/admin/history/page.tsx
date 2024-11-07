@@ -1,7 +1,7 @@
 "use client"
 
-import db from "@/app/utils/firestore"
-import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
+import db from "@/app/lib/utils/firestore"
+import { useGetAllDocuments } from "@/app/lib/utils/useGetAllDocuments"
 import { collection, deleteDoc, doc, endBefore, limit, orderBy, query, startAfter } from "@firebase/firestore"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

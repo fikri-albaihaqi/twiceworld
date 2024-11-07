@@ -5,9 +5,10 @@ import Link from "next/link"
 import Image from "next/image"
 import Discography from "../components/discography"
 import { useEffect, useState } from "react"
-import { useGetAllDocuments } from "../utils/useGetAllDocuments"
+import { useGetAllDocuments } from "../lib/utils/useGetAllDocuments"
 import { collection, limit, orderBy, query } from "@firebase/firestore"
-import db from "../utils/firestore"
+import db from "../lib/utils/firestore"
+import { DiscographyType } from "../lib/types/firebase"
 
 export default function Page() {
   const members = [
@@ -67,7 +68,7 @@ export default function Page() {
     }
   ]
   
-  const [discography, setDiscography] = useState<any>([])
+  const [discography, setDiscography] = useState<DiscographyType[]>([])
   const { getAllDocuments } = useGetAllDocuments()
 
   const collectionRef = collection(db, "discography")
@@ -168,7 +169,7 @@ export default function Page() {
           </h1>
         </div>
         <div className="w-[80%] grid grid-cols-2 md:grid-cols-3 justify-items-center">
-          {discography.map((album: any) => (
+          {discography.map((album: DiscographyType) => (
             <Discography album={album} admin={false} key={album.id} />
           ))}
         </div>

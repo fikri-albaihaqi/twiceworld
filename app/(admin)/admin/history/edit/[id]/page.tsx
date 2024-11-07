@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { useGetDocument } from "@/app/utils/useGetDocument"
-import { useUpdateDocument } from "@/app/utils/useUpdateDocument"
+import { useGetDocument } from "@/app/lib/utils/useGetDocument"
+import { useUpdateDocument } from "@/app/lib/utils/useUpdateDocument"
 
 const Page = ({ params }: { params: { id: string } }) => {
   const router = useRouter()

@@ -1,10 +1,10 @@
 "use client"
 
-import db from "@/app/utils/firestore"
-import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
-import { useGetDocument } from "@/app/utils/useGetDocument"
-import useSortTrack from "@/app/utils/useSortTracks"
-import { collection, query, where } from "@firebase/firestore"
+import db from "@/app/lib/utils/firestore"
+import { useGetAllDocuments } from "@/app/lib/utils/useGetAllDocuments"
+import { useGetDocument } from "@/app/lib/utils/useGetDocument"
+import useSortTrack from "@/app/lib/utils/useSortTracks"
+import { DocumentData, collection, query, where } from "@firebase/firestore"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -19,7 +19,7 @@ const Page = (
   const { getDocument } = useGetDocument()
   const { getAllDocuments } = useGetAllDocuments()
 
-  const [discography, setDiscography] = useState<any>()
+  const [discography, setDiscography] = useState<DocumentData>()
   const [tracks, setTracks] = useState<any>()
   const sortedTracks = useSortTrack(tracks, discography)
 

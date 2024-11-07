@@ -5,8 +5,8 @@ import { bungee } from "../../assets/fonts"
 import History from "../../components/history"
 import Image from "next/image"
 import { collection, orderBy, query } from "@firebase/firestore"
-import db from "../../utils/firestore"
-import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
+import db from "../../lib/utils/firestore"
+import { useGetAllDocuments } from "@/app/lib/utils/useGetAllDocuments"
 import { Swiper, SwiperSlide } from "swiper/react"
 import 'swiper/css';
 import 'swiper/css/navigation'
