@@ -1,5 +1,6 @@
 "use client"
 
+import { SortedTracksType, TrackType } from "@/app/lib/types/firebase"
 import db from "@/app/lib/utils/firestore"
 import { useGetAllDocuments } from "@/app/lib/utils/useGetAllDocuments"
 import { useGetDocument } from "@/app/lib/utils/useGetDocument"
@@ -20,7 +21,7 @@ const Page = (
   const { getAllDocuments } = useGetAllDocuments()
 
   const [discography, setDiscography] = useState<DocumentData>()
-  const [tracks, setTracks] = useState<any>()
+  const [tracks, setTracks] = useState<TrackType[]>([])
   const sortedTracks = useSortTrack(tracks, discography)
 
   useEffect(() => {
@@ -73,7 +74,7 @@ const Page = (
             <h2 className="text-2xl text-primary-pink font-bold">TRACK LIST</h2>
             <ol className="list-decimal ml-4 mb-8">
               {
-                sortedTracks.length > 0 ? sortedTracks.map((track: any) => <li key={track?.position}>{track?.album}</li>) :
+                sortedTracks.length > 0 ? sortedTracks.map((track: SortedTracksType) => <li key={track?.position}>{track?.album}</li>) :
                 <span></span>
               }
             </ol>

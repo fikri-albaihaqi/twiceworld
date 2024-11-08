@@ -1,11 +1,14 @@
-export const useSortTrack = (tracks: any, discography: any) => {
-  let tracksArray: any[] = []
-  let sortedTracks = Array(tracks?.length)
+import { DocumentData } from "@firebase/firestore"
+import { SongOrderType, SortedTracksType, TrackType } from "../types/firebase"
 
-  tracks?.forEach((track: any) => {
-    track.order.forEach((album: any) => {
-      if (album.album === discography?.name) {
-        tracksArray = [...tracksArray, { ...album, album: track.title }]
+export const useSortTrack = (tracks: TrackType[], discography: DocumentData | undefined) => {
+  let tracksArray: any[] = []
+  let sortedTracks: SortedTracksType[] = Array(tracks?.length)
+
+  tracks?.forEach((track: TrackType) => {
+    track.order.forEach((song: SongOrderType) => {
+      if (song.album === discography?.name) {
+        tracksArray = [...tracksArray, { ...song, title: track.title }]
       }
     })
   })
