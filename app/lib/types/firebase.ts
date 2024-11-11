@@ -35,3 +35,11 @@ export type SortedTracksType = {
   title: string
   position: string
 }
+
+export type HistoryType = {
+  date: string
+  description: string
+  id: string
+  image: string
+  title: string
+}
