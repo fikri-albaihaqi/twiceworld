@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { useUpdateDocument } from "@/app/utils/useUpdateDocument"
-import { useGetDocument } from "@/app/utils/useGetDocument"
+import { useUpdateDocument } from "@/app/lib/utils/useUpdateDocument"
+import { useGetDocument } from "@/app/lib/utils/useGetDocument"
+import { DocumentData } from "@firebase/firestore"
 
 const Page = ({
   params,
@@ -13,7 +14,7 @@ const Page = ({
   const router = useRouter()
   const { getDocument } = useGetDocument()
 
-  const [discography, setDiscography] = useState<any>({
+  const [discography, setDiscography] = useState<DocumentData | undefined>({
     name: "",
     alternateName: "",
     totalTrack: "",

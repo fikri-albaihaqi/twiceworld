@@ -1,18 +1,19 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
-import { useGetDocument } from "@/app/utils/useGetDocument"
-import { useUpdateDocument } from "@/app/utils/useUpdateDocument"
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useGetDocument } from '@/app/lib/utils/useGetDocument'
+import { useUpdateDocument } from '@/app/lib/utils/useUpdateDocument'
+import { DocumentData } from '@firebase/firestore'
 
 const Page = ({ params }: { params: { id: string } }) => {
   const router = useRouter()
 
-  const [history, setHistory] = useState<any>({
-    title: "",
-    date: "",
-    description: "",
-    image: "",
+  const [history, setHistory] = useState<DocumentData | undefined>({
+    title: '',
+    date: '',
+    description: '',
+    image: '',
   })
 
   const onChange = (e: { target: { name: any; value: any } }) => {
@@ -23,13 +24,13 @@ const Page = ({ params }: { params: { id: string } }) => {
   const updateDocument = useUpdateDocument()
 
   useEffect(() => {
-    getDocument("histories", params.id).then(data => setHistory(data))
+    getDocument('histories', params.id).then((data) => setHistory(data))
   }, [])
 
   const handleInput = () => {
     try {
-      updateDocument("histories", params.id, history)
-      router.push("/admin/history")
+      updateDocument('histories', params.id, history)
+      router.push('/admin/history')
     } catch (error) {
       alert(error)
     }
@@ -44,7 +45,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           <input
             type="text"
             name="title"
-            value={history.title}
+            value={history?.title}
             onChange={onChange}
             placeholder="ex: The First Comeback"
             className="px-2"
@@ -55,7 +56,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           <input
             type="text"
             name="date"
-            value={history.date}
+            value={history?.date}
             onChange={onChange}
             placeholder="ex: 2015-10-20"
             className="px-2"
@@ -66,7 +67,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           <input
             type="text"
             name="image"
-            value={history.image}
+            value={history?.image}
             onChange={onChange}
             placeholder="The link to the image"
             className="px-2"
@@ -76,13 +77,17 @@ const Page = ({ params }: { params: { id: string } }) => {
           <label>Description</label>
           <textarea
             name="description"
-            value={history.description}
+            value={history?.description}
             onChange={onChange}
             placeholder="History description"
             className="px-2 h-[400px] w-[400px]"
           />
         </div>
-        <button onClick={handleInput} type="button" className="bg-primary-pink text-white w-min p-2 mt-8 rounded">
+        <button
+          onClick={handleInput}
+          type="button"
+          className="bg-primary-pink text-white w-min p-2 mt-8 rounded"
+        >
           Submit
         </button>
       </form>

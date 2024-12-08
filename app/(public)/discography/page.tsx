@@ -4,12 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "@/app/(public)/discography/styles.module.css"
 import { useEffect, useState } from "react";
-import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments";
+import { useGetAllDocuments } from "@/app/lib/utils/useGetAllDocuments";
 import { collection, orderBy, query } from "@firebase/firestore";
-import db from "@/app/utils/firestore";
+import db from "@/app/lib/utils/firestore";
+import { DiscographyType } from "@/app/lib/types/firebase";
 
 export default function Page() {
-  const [discography, setDiscography] = useState<any>([])
+  const [discography, setDiscography] = useState<DiscographyType[]>([])
   const { getAllDocuments } = useGetAllDocuments()
   const [image, setImage] = useState<string>("/the-story-begins.jpg")
 
@@ -32,7 +33,7 @@ export default function Page() {
         <Image src={image} alt="Album" fill={true} className="object-cover" />
       </div>
       <div className="w-screen xl:w-1/2 flex flex-col">
-        {discography?.map((item: any) => (
+        {discography?.map((item: DiscographyType) => (
           <Link
             href={`/discography/${item.id}`}
             key={item.id}

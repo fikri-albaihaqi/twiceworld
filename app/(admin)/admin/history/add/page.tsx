@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useAddDocument } from '@/app/utils/useAddDocument'
+import { useAddDocument } from '@/app/lib/utils/useAddDocument'
 import { useRouter } from "next/navigation"
 
 const Page = () => {

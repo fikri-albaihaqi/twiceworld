@@ -1,8 +1,9 @@
 "use client"
 
 import Discography from "@/app/components/discography"
-import db from "@/app/utils/firestore"
-import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
+import { DiscographyType } from "@/app/lib/types/firebase"
+import db from "@/app/lib/utils/firestore"
+import { useGetAllDocuments } from "@/app/lib/utils/useGetAllDocuments"
 import { collection, endBefore, limit, orderBy, query, startAfter } from "@firebase/firestore"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -13,7 +14,7 @@ const Page = () => {
   const [page, setPage] = useState<number>(1)
   const pageSize = 8;
 
-  const [discography, setDiscography] = useState<any>([])
+  const [discography, setDiscography] = useState<DiscographyType[]>([])
   const { getAllDocuments } = useGetAllDocuments()
 
   const collectionRef = collection(db, "discography")
@@ -51,7 +52,7 @@ const Page = () => {
           </button>
         </Link>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {discography.map((item: any) => <Discography album={item} admin={true} key={item.id} />)}
+          {discography.map((item: DiscographyType) => <Discography album={item} admin={true} key={item.id} />)}
         </div>
         <div className="flex justify-center mt-8">
           {

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DiscographyType } from "../lib/types/firebase";
 
-const Discography = ({ album, admin }: { album: any; admin: boolean }) => {
+const Discography = ({ album, admin }: { album: DiscographyType; admin: boolean }) => {
   return (
     <Link
       href={
@@ -14,13 +15,13 @@ const Discography = ({ album, admin }: { album: any; admin: boolean }) => {
       <div className="w-full h-full flex flex-col justify-center items-center bg-transparent">
         <div className="absolute z-10 text-center">
           <h1
-            className="text-center text-2xl font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
+            className="text-gray-950 text-center text-2xl font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
                   ease-in-out"
           >
             {album.name}
           </h1>
           <p
-            className="text-base font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
+            className="text-gray-950 text-base font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 
                   ease-in-out"
           >
             {album.releaseDate}

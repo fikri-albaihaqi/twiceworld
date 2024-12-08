@@ -1,15 +1,16 @@
 "use client"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { auth } from "../utils/firebaseConfig"
+import { auth } from "../lib/utils/firebaseConfig"
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import { User } from "firebase/auth"
 
 const AdminMenu = () => {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
   const router = useRouter()
 
   useEffect(() => {

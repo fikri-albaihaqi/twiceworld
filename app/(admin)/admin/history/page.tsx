@@ -1,7 +1,8 @@
 "use client"
 
-import db from "@/app/utils/firestore"
-import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
+import { HistoryType } from "@/app/lib/types/firebase"
+import db from "@/app/lib/utils/firestore"
+import { useGetAllDocuments } from "@/app/lib/utils/useGetAllDocuments"
 import { collection, deleteDoc, doc, endBefore, limit, orderBy, query, startAfter } from "@firebase/firestore"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -12,7 +13,7 @@ const Page = () => {
   const [page, setPage] = useState<number>(1)
   const pageSize = 10;
 
-  const [histories, setHistories] = useState<any>([])
+  const [histories, setHistories] = useState<HistoryType[]>([])
   const { getAllDocuments } = useGetAllDocuments()
 
   const collectionRef = collection(db, "histories")
@@ -69,7 +70,7 @@ const Page = () => {
               </tr>
             </thead>
             <tbody>
-              {histories?.map((history: any) =>
+              {histories?.map((history: HistoryType) =>
                 <tr key={history.title}>
                   <td>{history.title}</td>
                   <td>{history.date}</td>

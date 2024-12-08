@@ -1,7 +1,8 @@
 "use client"
 
-import db from "@/app/utils/firestore"
-import { useGetAllDocuments } from "@/app/utils/useGetAllDocuments"
+import { TrackType } from "@/app/lib/types/firebase"
+import db from "@/app/lib/utils/firestore"
+import { useGetAllDocuments } from "@/app/lib/utils/useGetAllDocuments"
 import { collection, deleteDoc, doc, endBefore, limit, orderBy, query, startAfter } from "@firebase/firestore"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -12,7 +13,7 @@ const Page = () => {
   const [page, setPage] = useState<number>(1)
   const pageSize = 20;
 
-  const [songs, setSongs] = useState<any>([])
+  const [songs, setSongs] = useState<TrackType[]>([])
   const { getAllDocuments } = useGetAllDocuments()
 
   const collectionRef = collection(db, "songs")
@@ -76,12 +77,12 @@ const Page = () => {
               </tr>
             </thead>
             <tbody>
-              {songs?.map((song: any) =>
+              {songs?.map((song: TrackType) =>
                 <tr key={song.id}>
                   <td>{song.title}</td>
-                  <td>{convertSongDuration(song.duration)}</td>
+                  <td>{convertSongDuration(Number(song.duration))}</td>
                   <td>
-                    {song.albums.map((album: any) => <>{album} <br /></>)}
+                    {song.albums.map((album: string) => <>{album} <br /></>)}
                   </td>
                   <td>
                     <Link href={`/admin/song/edit/${song.id}`} className="bg-primary-pink mx-px p-2 rounded text-white">
