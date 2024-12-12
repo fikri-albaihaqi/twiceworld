@@ -1,9 +1,10 @@
 'use client'
 
-import { LoginFieldType } from '@/app/lib/types/field'
+import { AuthFieldType } from '@/app/lib/types/field'
 import { auth } from '@/app/lib/utils/firebaseConfig'
 import { Form, FormProps, Input, message } from 'antd'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 const Page = () => {
@@ -11,7 +12,7 @@ const Page = () => {
   const [form] = Form.useForm()
   const [messageApi, contextHolder] = message.useMessage()
 
-  const onFinish = async (values: LoginFieldType) => {
+  const onFinish = async (values: AuthFieldType) => {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password)
       router.push('/admin')
@@ -23,7 +24,7 @@ const Page = () => {
     }
   }
 
-  const onFinishFailed: FormProps<LoginFieldType>['onFinishFailed'] = (
+  const onFinishFailed: FormProps<AuthFieldType>['onFinishFailed'] = (
     errorInfo
   ) => {
     console.log('Failed:', errorInfo)
@@ -41,14 +42,14 @@ const Page = () => {
           onFinishFailed={onFinishFailed}
           className="w-[75%]"
         >
-          <Form.Item<LoginFieldType>
+          <Form.Item<AuthFieldType>
             name="email"
             rules={[{ required: true, message: 'Please input your email!' }]}
           >
             <Input className="h-12 rounded-lg" placeholder="Email" />
           </Form.Item>
 
-          <Form.Item<LoginFieldType>
+          <Form.Item<AuthFieldType>
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
@@ -59,13 +60,19 @@ const Page = () => {
           </Form.Item>
           <Form.Item>
             <button
-              className="w-full px-4 py-2 rounded-md bg-primary-pink text-white"
+              className="w-full px-4 py-2 rounded-md bg-primary-pink text-white text-lg"
               type="submit"
             >
               Sign In
             </button>
           </Form.Item>
         </Form>
+        <Link
+          href="/register"
+          className="w-[75%] px-4 py-2 rounded-md border-gray-400 border-[1px] text-center"
+        >
+          Create Account
+        </Link>
       </div>
     </main>
   )

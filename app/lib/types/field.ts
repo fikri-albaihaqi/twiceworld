@@ -1,4 +1,4 @@
-export type LoginFieldType = {
+export type AuthFieldType = {
   email: string
   password: string
 }
