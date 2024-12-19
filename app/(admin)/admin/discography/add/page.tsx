@@ -31,7 +31,7 @@ const getBase64 = (file: FileType): Promise<string> =>
 const Page = () => {
   const router = useRouter()
   const [form] = Form.useForm()
-  const [scheduleDate, setScheduleDate] = useState<string | string[]>('')
+  const [releaseDate, setReleaseDate] = useState<string | string[]>('')
   const [previewOpen, setPreviewOpen] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [fileList, setFileList] = useState<UploadFile[]>([])
@@ -61,7 +61,7 @@ const Page = () => {
     try {
       addDocument('discography', {
         ...form.getFieldsValue(),
-        releaseDate: scheduleDate,
+        releaseDate: releaseDate,
       })
       router.push('/admin')
     } catch (error: any) {
@@ -70,7 +70,7 @@ const Page = () => {
   }
 
   const onChange: DatePickerProps['onChange'] = (_date, dateString) => {
-    setScheduleDate(dateString)
+    setReleaseDate(dateString)
   }
 
   return (
