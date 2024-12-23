@@ -5,7 +5,7 @@ import { poppins } from '../assets/fonts'
 import Footer from '../components/footer'
 
 export const metadata: Metadata = {
-  title: 'Twiceland',
+  title: 'Twiceworld',
   description: 'Everything about the best K-Pop Girl Group TWICE!',
   icons: {
     icon: "/favicon.png",

@@ -5,7 +5,7 @@ import Socials from "./socials"
 export default function Footer() {
   return(
     <footer className="relative w-screen bottom-0 h-[256px] bg-primary-black flex justify-evenly items-center text-white">
-      <Image src="/once.png" alt="Twiceland Logo" width={156} height={156}
+      <Image src="/once.png" alt="Twiceworld Logo" width={156} height={156}
       />
       
       <div className="flex">
