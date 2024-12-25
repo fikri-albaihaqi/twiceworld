@@ -7,7 +7,6 @@ import {
   DatePicker,
   DatePickerProps,
   Form,
-  Image,
   Input,
   Select,
   Upload,
@@ -15,34 +14,32 @@ import {
   UploadProps,
 } from 'antd'
 import { DiscographyType } from '@/app/lib/types/firebase'
-import { FileType } from '@/app/lib/types/field'
 import { PlusOutlined } from '@ant-design/icons'
+import { getStorage, ref, uploadBytes } from 'firebase/storage'
 
 const { Option } = Select
-
-const getBase64 = (file: FileType): Promise<string> =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = () => resolve(reader.result as string)
-    reader.onerror = (error) => reject(error)
-  })
 
 const Page = () => {
   const router = useRouter()
   const [form] = Form.useForm()
   const [releaseDate, setReleaseDate] = useState<string | string[]>('')
-  const [previewOpen, setPreviewOpen] = useState(false)
-  const [previewImage, setPreviewImage] = useState('')
   const [fileList, setFileList] = useState<UploadFile[]>([])
+  const [imageFile, setImageFile] = useState<File | null>()
+  const storage = getStorage()
 
-  const handlePreview = async (file: UploadFile) => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj as FileType)
-    }
+  const propsImage: UploadProps = {
+    onRemove: () => {
+      if (imageFile) {
+        setImageFile(null)
+      }
+    },
+    beforeUpload: (file) => {
+      setImageFile(file)
 
-    setPreviewImage(file.url || (file.preview as string))
-    setPreviewOpen(true)
+      return false
+    },
+    accept: 'image/*',
+    maxCount: 1,
   }
 
   const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) =>
@@ -59,11 +56,21 @@ const Page = () => {
 
   const onFinish = () => {
     try {
-      addDocument('discography', {
-        ...form.getFieldsValue(),
-        releaseDate: releaseDate,
-      })
-      router.push('/admin')
+      if (imageFile) {
+        const storageRef = ref(storage, 'album/' + imageFile.name)
+        uploadBytes(storageRef, imageFile).then((snapshot) => {
+          addDocument('discography', {
+            ...form.getFieldsValue(),
+            image:
+              'https://firebasestorage.googleapis.com/v0/b/' +
+              snapshot.metadata.bucket +
+              '/o/album%2F' +
+              snapshot.metadata.name +
+              '?alt=media',
+            releaseDate: releaseDate,
+          }).then(() => router.push('/admin'))
+        })
+      }
     } catch (error: any) {
       alert('Add Album Failed ' + error.message)
     }
@@ -136,33 +143,16 @@ const Page = () => {
             <Form.Item<DiscographyType>
               name="image"
               label="Album Cover"
-              rules={[
-                { required: true, message: 'Please input the album cover!' },
-              ]}
               className="w-1/2"
             >
               <Upload
-                action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
                 listType="picture-card"
                 fileList={fileList}
-                onPreview={handlePreview}
                 onChange={handleChange}
+                {...propsImage}
               >
                 {fileList.length >= 1 ? null : uploadButton}
               </Upload>
-              {previewImage && (
-                <Image
-                  wrapperStyle={{ display: 'none' }}
-                  preview={{
-                    visible: previewOpen,
-                    onVisibleChange: (visible) => setPreviewOpen(visible),
-                    afterOpenChange: (visible) =>
-                      !visible && setPreviewImage(''),
-                  }}
-                  src={previewImage}
-                  alt="Album cover preview image"
-                />
-              )}
             </Form.Item>
 
             <Form.Item<DiscographyType>
