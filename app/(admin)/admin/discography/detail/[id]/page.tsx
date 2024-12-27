@@ -74,7 +74,7 @@ const Page = (
             <h2 className="text-2xl text-primary-pink font-bold">TRACK LIST</h2>
             <ol className="list-decimal ml-4 mb-8">
               {
-                sortedTracks.length > 0 ? sortedTracks.map((track: SortedTracksType) => <li key={track?.position}>{track?.album}</li>) :
+                sortedTracks.length > 0 ? sortedTracks.map((track: SortedTracksType) => <li key={track?.position}>{track?.title}</li>) :
                 <span></span>
               }
             </ol>
