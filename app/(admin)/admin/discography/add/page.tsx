@@ -263,7 +263,7 @@ const Page = () => {
               className="w-full px-4 py-2 rounded-md bg-primary-pink text-white text-lg"
               type="submit"
             >
-              Tambah Album
+              Add Album
             </button>
           </Form.Item>
         </Form>
