@@ -35,15 +35,17 @@ const Page = () => {
     try {
       const { memberName, album, position, ...song } = form.getFieldsValue()
 
-      addDocument('songs', {
-        title: song.title,
-        duration: song.duration,
-        albums: songAlbum,
-        memberCredits: credits,
-        order: songAlbumPosition,
-      })
+      if (songAlbum.length !== 0 && songAlbumPosition.length !== 0) {
+        addDocument('songs', {
+          title: song.title,
+          duration: song.duration,
+          albums: songAlbum,
+          memberCredits: credits,
+          order: songAlbumPosition,
+        })
 
-      router.push('/admin/song')
+        router.push('/admin/song')
+      }
     } catch (error) {
       alert(error)
     }
