@@ -23,9 +23,6 @@ const SongCreditForm = ({
         <Form.Item<MemberType>
           name="memberName"
           label="Member Credits"
-          rules={[
-            { required: true, message: 'Please input the song duration!' },
-          ]}
           className="w-full mr-2"
         >
           <Input className="h-12 rounded-lg" placeholder="Member Name" />

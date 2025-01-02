@@ -28,9 +28,6 @@ const SongAlbumForm = ({
         <Form.Item<SongOrderType>
           name="album"
           label="Album Name"
-          rules={[
-            { required: true, message: 'Please input the song duration!' },
-          ]}
           className="w-full mr-2"
         >
           <Input className="h-12 rounded-lg" placeholder="Album Name" />
@@ -39,9 +36,6 @@ const SongAlbumForm = ({
         <Form.Item<SongOrderType>
           name="position"
           label="Track Order"
-          rules={[
-            { required: true, message: 'Please input the song duration!' },
-          ]}
           className="w-full mr-2"
         >
           <Input
