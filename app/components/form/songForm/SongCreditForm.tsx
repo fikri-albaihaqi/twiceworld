@@ -15,6 +15,7 @@ const SongCreditForm = ({
 
   const handleAddCredit = () => {
     handleSetCredits({ memberName: form.getFieldValue('memberName') })
+    form.resetFields(["memberName"])
   }
 
   return (

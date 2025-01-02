@@ -21,6 +21,8 @@ const SongAlbumForm = ({
       album: form.getFieldValue('album'),
       position: form.getFieldValue('position'),
     })
+
+    form.resetFields(["album", "position"])
   }
   return (
     <>
