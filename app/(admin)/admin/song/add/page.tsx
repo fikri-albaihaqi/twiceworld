@@ -23,6 +23,10 @@ const Page = () => {
     setCredits([...credits, data])
   }
 
+  const handleRemoveCredits = (index: number) => {
+    setCredits(credits.filter((_item, i) => i !== index))
+  }
+
   const handleSetSongAlbum = (data: string) => {
     setSongAlbum([...songAlbum, data])
   }
@@ -89,6 +93,7 @@ const Page = () => {
             form={form}
             credits={credits}
             handleSetCredits={handleSetCredits}
+            handleRemoveCredits={handleRemoveCredits}
           />
 
           <SongAlbumForm
