@@ -1,5 +1,3 @@
-'use client'
-
 import { SongOrderType } from '@/app/lib/types/firebase'
 import { Form, FormInstance, Input } from 'antd'
 
@@ -8,11 +6,13 @@ const SongAlbumForm = ({
   songAlbumPosition,
   handleSetSongAlbum,
   handleSetSongAlbumPosition,
+  handleRemoveSongAlbum,
 }: {
   form: FormInstance<any>
   songAlbumPosition: SongOrderType[]
   handleSetSongAlbum: (data: string) => void
   handleSetSongAlbumPosition: (data: SongOrderType) => void
+  handleRemoveSongAlbum: (index: number) => void
 }) => {
   const handleAddSongAlbumPosition = () => {
     handleSetSongAlbum(form.getFieldValue('album'))
@@ -22,7 +22,7 @@ const SongAlbumForm = ({
       position: form.getFieldValue('position'),
     })
 
-    form.resetFields(["album", "position"])
+    form.resetFields(['album', 'position'])
   }
   return (
     <>
@@ -59,9 +59,18 @@ const SongAlbumForm = ({
 
       <ol className="self-end list-decimal mb-8">
         {songAlbumPosition?.map((item: any, index: number) => (
-          <li key={index} className='mb-2'>
-            {item.album} <br />
-            Position: {item.position}
+          <li key={index} className="flex mb-2">
+            <div>
+              {item.album} <br />
+              Position: {item.position}
+            </div>
+            <button
+              className="w-max self-end bg-red-500 text-white p-2 ml-2 rounded"
+              onClick={() => handleRemoveSongAlbum(index)}
+              type="button"
+            >
+              Remove
+            </button>
           </li>
         ))}
       </ol>

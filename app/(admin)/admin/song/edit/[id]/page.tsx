@@ -48,6 +48,11 @@ const Page = ({ params }: { params: { id: string } }) => {
     setSongAlbumPosition([...songAlbumPosition, data])
   }
 
+  const handleRemoveSongAlbum = (index: number) => {
+    setSongAlbum(songAlbum.filter((_item, i) => i !== index))
+    setSongAlbumPosition(songAlbumPosition.filter((_item, i) => i !== index))
+  }
+
   const onFinish = () => {
     try {
       const { memberName, album, position, ...song } = form.getFieldsValue()
@@ -114,6 +119,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             songAlbumPosition={songAlbumPosition}
             handleSetSongAlbum={handleSetSongAlbum}
             handleSetSongAlbumPosition={handleSetSongAlbumPosition}
+            handleRemoveSongAlbum={handleRemoveSongAlbum}
           />
 
           <Form.Item>
