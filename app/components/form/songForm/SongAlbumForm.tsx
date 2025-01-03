@@ -57,9 +57,12 @@ const SongAlbumForm = ({
         </Form.Item>
       </div>
 
-      <ol className="self-end list-decimal">
+      <ol className="self-end list-decimal mb-8">
         {songAlbumPosition?.map((item: any, index: number) => (
-          <li key={index}>{item.album}</li>
+          <li key={index} className='mb-2'>
+            {item.album} <br />
+            Position: {item.position}
+          </li>
         ))}
       </ol>
     </>
