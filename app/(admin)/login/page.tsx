@@ -1,65 +1,79 @@
-"use client"
+'use client'
 
-import { auth } from "@/app/lib/utils/firebaseConfig"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { AuthFieldType } from '@/app/lib/types/field'
+import { auth } from '@/app/lib/utils/firebaseConfig'
+import { Form, FormProps, Input, message } from 'antd'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const Page = () => {
   const router = useRouter()
+  const [form] = Form.useForm()
+  const [messageApi, contextHolder] = message.useMessage()
 
-  const [form, setForm] = useState({
-    email: "",
-    password: ""
-  })
-
-  const onChange = (e: { target: { name: any; value: any } }) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+  const onFinish = async (values: AuthFieldType) => {
+    try {
+      await signInWithEmailAndPassword(auth, values.email, values.password)
+      router.push('/admin')
+    } catch (error: any) {
+      messageApi.open({
+        type: 'error',
+        content: 'Login Failed ' + error.message,
+      })
+    }
   }
 
-  const handleLogin = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, form.email, form.password);
-      router.push("/admin");
-    } catch (error) {
-      alert(error);
-    }
+  const onFinishFailed: FormProps<AuthFieldType>['onFinishFailed'] = (
+    errorInfo
+  ) => {
+    console.log('Failed:', errorInfo)
   }
 
   return (
     <main className="min-h-screen flex flex-col justify-center items-center">
-      <h1 className="text-3xl font-bold mb-16">Login</h1>
-      <form className="relative w-1/4 flex flex-col items-center">
-        <div className="mb-4 self-start">
-          <label>Email</label>
-          <input
-            type="email"
+      {contextHolder}
+      <div className="w-[600px] flex flex-col items-center justify-center p-8 rounded-xl drop-shadow-xl bg-white">
+        <h1 className="text-3xl font-bold mb-16">Login</h1>
+        <Form
+          layout="vertical"
+          form={form}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          className="w-[75%]"
+        >
+          <Form.Item<AuthFieldType>
             name="email"
-            className="absolute right-0"
-            value={form.email}
-            onChange={onChange}
-          />
-        </div>
-        <div className="self-start">
-          <label>Password</label>
-          <input
-            type="password"
+            rules={[{ required: true, message: 'Please input your email!' }]}
+          >
+            <Input className="h-12 rounded-lg" placeholder="Email" />
+          </Form.Item>
+
+          <Form.Item<AuthFieldType>
             name="password"
-            className="absolute right-0"
-            value={form.password}
-            onChange={onChange}
-          />
-        </div>
-        <div>
-          <Link href="/register">
-            <button type="button" className="bg-cream text-white p-2 mt-8 mx-2 rounded">Register</button>
-          </Link>
-          <button onClick={handleLogin} type="button" className="bg-primary-pink text-white p-2 mt-8 mx-2 rounded">
-            Login
-          </button>
-        </div>
-      </form>
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password
+              className="h-12 rounded-lg"
+              placeholder="Password"
+            />
+          </Form.Item>
+          <Form.Item>
+            <button
+              className="w-full px-4 py-2 rounded-md bg-primary-pink text-white text-lg"
+              type="submit"
+            >
+              Sign In
+            </button>
+          </Form.Item>
+        </Form>
+        <Link
+          href="/register"
+          className="w-[75%] px-4 py-2 rounded-md border-gray-400 border-[1px] text-center"
+        >
+          Create Account
+        </Link>
+      </div>
     </main>
   )
 }

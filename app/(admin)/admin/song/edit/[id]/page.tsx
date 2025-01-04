@@ -1,14 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAddDocument } from '@/app/lib/utils/useAddDocument'
 import { useRouter } from 'next/navigation'
 import { Form, Input } from 'antd'
 import { MemberType, SongOrderType, TrackType } from '@/app/lib/types/firebase'
 import SongCreditForm from '@/app/components/form/songForm/SongCreditForm'
 import SongAlbumForm from '@/app/components/form/songForm/SongAlbumForm'
+import { useGetDocument } from '@/app/lib/utils/useGetDocument'
+import { useUpdateDocument } from '@/app/lib/utils/useUpdateDocument'
 
-const Page = () => {
+const Page = ({ params }: { params: { id: string } }) => {
   const router = useRouter()
   const [form] = Form.useForm()
   const [credits, setCredits] = useState<MemberType[]>([])
@@ -17,7 +19,18 @@ const Page = () => {
     []
   )
 
-  const addDocument = useAddDocument()
+  const { getDocument } = useGetDocument()
+
+  useEffect(() => {
+    getDocument('songs', params.id).then((data) => {
+      form.setFieldsValue(data)
+      setCredits(data?.memberCredits)
+      setSongAlbum(data?.albums)
+      setSongAlbumPosition(data?.order)
+    })
+  }, [])
+
+  const updateDocument = useUpdateDocument()
 
   const handleSetCredits = (data: MemberType) => {
     setCredits([...credits, data])
@@ -45,7 +58,7 @@ const Page = () => {
       const { memberName, album, position, ...song } = form.getFieldsValue()
 
       if (songAlbum.length !== 0 && songAlbumPosition.length !== 0) {
-        addDocument('songs', {
+        updateDocument('songs', params.id, {
           title: song.title,
           duration: song.duration,
           albums: songAlbum,
@@ -114,7 +127,7 @@ const Page = () => {
               className="w-full px-4 py-2 rounded-md bg-primary-pink text-white text-lg"
               type="submit"
             >
-              Add Song
+              Edit Song
             </button>
           </Form.Item>
         </Form>
