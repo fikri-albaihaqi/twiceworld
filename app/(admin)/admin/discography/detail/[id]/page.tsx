@@ -78,7 +78,7 @@ const Page = (
                 <span></span>
               }
             </ol>
-            <Link href="/admin/discography/add/track" className="bg-primary-pink p-2 rounded text-white">
+            <Link href="/admin/song/add" className="bg-primary-pink p-2 rounded text-white">
               Add Track
             </Link>
           </div>
