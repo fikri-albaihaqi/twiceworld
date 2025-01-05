@@ -210,7 +210,7 @@ const Page = () => {
               <Select
                 style={{ width: '100%' }}
                 className="h-12 rounded-lg"
-                placeholder="Choose Release Type"
+                placeholder="Choose Album Language"
               >
                 <Option key="Korean" value="Korean">
                   Korean
