@@ -103,7 +103,7 @@ const Page = ({ params }: { params: { id: string } }) => {
               ]}
               className="w-full mr-2"
             >
-              <Input className="h-12 rounded-lg" placeholder="Title" />
+              <Input className="h-12 rounded-lg" placeholder="Song Duration In Seconds" />
             </Form.Item>
           </div>
 
