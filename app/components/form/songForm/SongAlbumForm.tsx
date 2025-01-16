@@ -1,5 +1,8 @@
-import { SongOrderType } from '@/app/lib/types/firebase'
+'use client'
+
+import { DiscographyType, SongOrderType } from '@/app/lib/types/firebase'
 import { Form, FormInstance, Input } from 'antd'
+import { useState } from 'react'
 
 const SongAlbumForm = ({
   form,
@@ -14,15 +17,51 @@ const SongAlbumForm = ({
   handleSetSongAlbumPosition: (data: SongOrderType) => void
   handleRemoveSongAlbum: (index: number) => void
 }) => {
+  const [discography, setDiscography] = useState<DiscographyType[]>([
+    {
+      alternateName: '',
+      description: '',
+      id: '',
+      image: '',
+      language: '',
+      name: 'NA',
+      releaseDate: '',
+      totalTrack: '',
+      type: '',
+      video: '',
+    },
+    {
+      alternateName: '',
+      description: '',
+      id: '',
+      image: '',
+      language: '',
+      name: 'ZONE',
+      releaseDate: '',
+      totalTrack: '',
+      type: '',
+      video: '',
+    },
+  ])
+  const [albumName, setAlbumName] = useState('')
+
+  const handleSelectAlbum = (name: string) => {
+    setAlbumName(name)
+    form.setFieldValue('album', name)
+  }
+
   const handleAddSongAlbumPosition = () => {
-    handleSetSongAlbum(form.getFieldValue('album'))
+    if (albumName && form.getFieldValue('position')) {
+      handleSetSongAlbum(form.getFieldValue('album'))
 
-    handleSetSongAlbumPosition({
-      album: form.getFieldValue('album'),
-      position: form.getFieldValue('position'),
-    })
+      handleSetSongAlbumPosition({
+        album: form.getFieldValue('album'),
+        position: form.getFieldValue('position'),
+      })
 
-    form.resetFields(['album', 'position'])
+      form.resetFields(['album', 'position'])
+      setAlbumName('')
+    }
   }
   return (
     <>
@@ -32,7 +71,31 @@ const SongAlbumForm = ({
           label="Album Name"
           className="w-full mr-2"
         >
-          <Input className="h-12 rounded-lg" placeholder="Album Name" />
+          <div>
+            <Input
+              className="h-12 rounded-lg"
+              placeholder="Album Name"
+              value={albumName}
+            />
+
+            <div
+              className={`${
+                discography.length > 0 ? 'block' : 'hidden'
+              } w-full absolute z-10 p-1 bg-white rounded-lg`}
+            >
+              <ul>
+                {discography.map((album, index) => (
+                  <li
+                    onClick={() => handleSelectAlbum(album.name)}
+                    key={index}
+                    className="p-2 hover:bg-slate-200"
+                  >
+                    {album.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </Form.Item>
 
         <Form.Item<SongOrderType>
