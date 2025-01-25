@@ -37,12 +37,9 @@ const SongAlbumForm = ({
     setShowDropdown(true)
   }
 
-  const onBlur = () => {
-    setShowDropdown(false)
-  }
-
   const handleSelectAlbum = (name: string) => {
     setAlbumName(name)
+    setShowDropdown(false)
     form.setFieldValue('album', name)
   }
 
@@ -73,7 +70,6 @@ const SongAlbumForm = ({
               placeholder="Album Name"
               value={albumName}
               onFocus={onFocus}
-              onBlur={onBlur}
             />
 
             <div
