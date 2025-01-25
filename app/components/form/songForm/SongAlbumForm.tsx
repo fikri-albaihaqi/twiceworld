@@ -1,8 +1,11 @@
 'use client'
 
 import { DiscographyType, SongOrderType } from '@/app/lib/types/firebase'
+import db from '@/app/lib/utils/firestore'
+import { useGetAllDocuments } from '@/app/lib/utils/useGetAllDocuments'
+import { collection, orderBy, query } from '@firebase/firestore'
 import { Form, FormInstance, Input } from 'antd'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const SongAlbumForm = ({
   form,
@@ -17,33 +20,26 @@ const SongAlbumForm = ({
   handleSetSongAlbumPosition: (data: SongOrderType) => void
   handleRemoveSongAlbum: (index: number) => void
 }) => {
-  const [discography, setDiscography] = useState<DiscographyType[]>([
-    {
-      alternateName: '',
-      description: '',
-      id: '',
-      image: '',
-      language: '',
-      name: 'NA',
-      releaseDate: '',
-      totalTrack: '',
-      type: '',
-      video: '',
-    },
-    {
-      alternateName: '',
-      description: '',
-      id: '',
-      image: '',
-      language: '',
-      name: 'ZONE',
-      releaseDate: '',
-      totalTrack: '',
-      type: '',
-      video: '',
-    },
-  ])
+  const [discography, setDiscography] = useState<DiscographyType[]>([])
   const [albumName, setAlbumName] = useState('')
+  const [showDropdown, setShowDropdown] = useState<boolean>(false)
+
+  const collectionRef = collection(db, "discography")
+  const dbQuery = query(collectionRef, orderBy("releaseDate", "desc"))
+
+  const { getAllDocuments } = useGetAllDocuments()
+
+  useEffect(() => {
+    getAllDocuments(dbQuery).then(data => setDiscography(data))
+  }, [])
+
+  const onFocus = () => {
+    setShowDropdown(true)
+  }
+
+  const onBlur = () => {
+    setShowDropdown(false)
+  }
 
   const handleSelectAlbum = (name: string) => {
     setAlbumName(name)
@@ -76,12 +72,14 @@ const SongAlbumForm = ({
               className="h-12 rounded-lg"
               placeholder="Album Name"
               value={albumName}
+              onFocus={onFocus}
+              onBlur={onBlur}
             />
 
             <div
               className={`${
-                discography.length > 0 ? 'block' : 'hidden'
-              } w-full absolute z-10 p-1 bg-white rounded-lg`}
+                showDropdown ? 'block' : 'hidden'
+              } w-full h-[240px] absolute z-10 p-1 overflow-x-auto bg-white rounded-lg`}
             >
               <ul>
                 {discography.map((album, index) => (
