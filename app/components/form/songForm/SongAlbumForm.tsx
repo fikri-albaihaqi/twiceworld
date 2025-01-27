@@ -23,19 +23,38 @@ const SongAlbumForm = ({
   const [discography, setDiscography] = useState<DiscographyType[]>([])
   const [albumName, setAlbumName] = useState('')
   const [showDropdown, setShowDropdown] = useState<boolean>(false)
+  const [searchQuery, setSearchQuery] = useState<string>('')
+  const [searchResult, setSearchResult] = useState<DiscographyType[]>(discography)
 
-  const collectionRef = collection(db, "discography")
-  const dbQuery = query(collectionRef, orderBy("releaseDate", "desc"))
+  const collectionRef = collection(db, 'discography')
+  const dbQuery = query(collectionRef, orderBy('releaseDate', 'desc'))
 
   const { getAllDocuments } = useGetAllDocuments()
 
   useEffect(() => {
-    getAllDocuments(dbQuery).then(data => setDiscography(data))
+    getAllDocuments(dbQuery).then((data) => setDiscography(data))
   }, [])
 
   const onFocus = () => {
     setShowDropdown(true)
   }
+
+  const onAlbumNameChange = (e: { target: { name: any; value: any } }) => {
+    const query = e.target.value
+    setSearchQuery(query.toLowerCase())
+  }
+
+  useEffect(() => {
+    if (searchQuery === '') {
+      setSearchResult(discography)
+    } else {
+      setSearchResult(
+        discography.filter((album) =>
+          album.name.toLowerCase().includes(searchQuery)
+        )
+      )
+    }
+  }, [discography, searchQuery])
 
   const handleSelectAlbum = (name: string) => {
     setAlbumName(name)
@@ -68,8 +87,9 @@ const SongAlbumForm = ({
             <Input
               className="h-12 rounded-lg"
               placeholder="Album Name"
-              value={albumName}
+              value={albumName !== '' ? albumName : searchQuery}
               onFocus={onFocus}
+              onChange={onAlbumNameChange}
             />
 
             <div
@@ -78,7 +98,7 @@ const SongAlbumForm = ({
               } w-full h-[240px] absolute z-10 p-1 overflow-x-auto bg-white rounded-lg`}
             >
               <ul>
-                {discography.map((album, index) => (
+                {searchResult.map((album, index) => (
                   <li
                     onClick={() => handleSelectAlbum(album.name)}
                     key={index}
