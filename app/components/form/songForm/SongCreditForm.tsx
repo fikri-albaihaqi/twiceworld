@@ -1,5 +1,7 @@
 import { MemberType } from '@/app/lib/types/firebase'
-import { Form, FormInstance, Input } from 'antd'
+import { Form, FormInstance, Input, Select } from 'antd'
+
+const { Option } = Select
 
 const SongCreditForm = ({
   form,
@@ -25,7 +27,39 @@ const SongCreditForm = ({
           label="Member Credits"
           className="w-full mr-2"
         >
-          <Input className="h-12 rounded-lg" placeholder="Member Name" />
+          <Select
+            style={{ width: '100%' }}
+            className="h-12 rounded-lg"
+            placeholder="Choose Member"
+          >
+            <Option key="Im Nayeon" value="Im Nayeon">
+              Im Nayeon
+            </Option>
+            <Option key="Yoo Jeongyeon" value="Yoo Jeongyeon">
+              Yoo Jeongyeon
+            </Option>
+            <Option key="Hirai Momo" value="Hirai Momo">
+              Hirai Momo
+            </Option>
+            <Option key="Minatozaki Sana" value="Minatozaki Sana">
+              Minatozaki Sana
+            </Option>
+            <Option key="Park Jihyo" value="Park Jihyo">
+              Park Jihyo
+            </Option>
+            <Option key="Myoi Mina" value="Myoi Mina">
+              Myoi Mina
+            </Option>
+            <Option key="Kim Dahyun" value="Kim Dahyun">
+              Kim Dahyun
+            </Option>
+            <Option key="Son Chaeyoung" value="Son Chaeyoung">
+              Son Chaeyoung
+            </Option>
+            <Option key="Chou Tzuyu" value="Chou Tzuyu">
+              Chou Tzuyu
+            </Option>
+          </Select>
         </Form.Item>
 
         <Form.Item>

@@ -1,5 +1,4 @@
 export type DiscographyType = {
-  album: string
   alternateName: string
   description: string
   id: string

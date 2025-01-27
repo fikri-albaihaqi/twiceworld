@@ -1,5 +1,11 @@
-import { SongOrderType } from '@/app/lib/types/firebase'
+'use client'
+
+import { DiscographyType, SongOrderType } from '@/app/lib/types/firebase'
+import db from '@/app/lib/utils/firestore'
+import { useGetAllDocuments } from '@/app/lib/utils/useGetAllDocuments'
+import { collection, orderBy, query } from '@firebase/firestore'
 import { Form, FormInstance, Input } from 'antd'
+import { useEffect, useRef, useState } from 'react'
 
 const SongAlbumForm = ({
   form,
@@ -14,15 +20,60 @@ const SongAlbumForm = ({
   handleSetSongAlbumPosition: (data: SongOrderType) => void
   handleRemoveSongAlbum: (index: number) => void
 }) => {
+  const [discography, setDiscography] = useState<DiscographyType[]>([])
+  const [albumName, setAlbumName] = useState('')
+  const [showDropdown, setShowDropdown] = useState<boolean>(false)
+  const [searchQuery, setSearchQuery] = useState<string>('')
+  const [searchResult, setSearchResult] = useState<DiscographyType[]>(discography)
+
+  const collectionRef = collection(db, 'discography')
+  const dbQuery = query(collectionRef, orderBy('releaseDate', 'desc'))
+
+  const { getAllDocuments } = useGetAllDocuments()
+
+  useEffect(() => {
+    getAllDocuments(dbQuery).then((data) => setDiscography(data))
+  }, [])
+
+  const onFocus = () => {
+    setShowDropdown(true)
+  }
+
+  const onAlbumNameChange = (e: { target: { name: any; value: any } }) => {
+    const query = e.target.value
+    setSearchQuery(query.toLowerCase())
+  }
+
+  useEffect(() => {
+    if (searchQuery === '') {
+      setSearchResult(discography)
+    } else {
+      setSearchResult(
+        discography.filter((album) =>
+          album.name.toLowerCase().includes(searchQuery)
+        )
+      )
+    }
+  }, [discography, searchQuery])
+
+  const handleSelectAlbum = (name: string) => {
+    setAlbumName(name)
+    setShowDropdown(false)
+    form.setFieldValue('album', name)
+  }
+
   const handleAddSongAlbumPosition = () => {
-    handleSetSongAlbum(form.getFieldValue('album'))
+    if (albumName && form.getFieldValue('position')) {
+      handleSetSongAlbum(form.getFieldValue('album'))
 
-    handleSetSongAlbumPosition({
-      album: form.getFieldValue('album'),
-      position: form.getFieldValue('position'),
-    })
+      handleSetSongAlbumPosition({
+        album: form.getFieldValue('album'),
+        position: form.getFieldValue('position'),
+      })
 
-    form.resetFields(['album', 'position'])
+      form.resetFields(['album', 'position'])
+      setAlbumName('')
+    }
   }
   return (
     <>
@@ -32,7 +83,33 @@ const SongAlbumForm = ({
           label="Album Name"
           className="w-full mr-2"
         >
-          <Input className="h-12 rounded-lg" placeholder="Album Name" />
+          <div>
+            <Input
+              className="h-12 rounded-lg"
+              placeholder="Album Name"
+              value={albumName !== '' ? albumName : searchQuery}
+              onFocus={onFocus}
+              onChange={onAlbumNameChange}
+            />
+
+            <div
+              className={`${
+                showDropdown ? 'block' : 'hidden'
+              } w-full h-[240px] absolute z-10 p-1 overflow-x-auto bg-white rounded-lg`}
+            >
+              <ul>
+                {searchResult.map((album, index) => (
+                  <li
+                    onClick={() => handleSelectAlbum(album.name)}
+                    key={index}
+                    className="p-2 hover:bg-slate-200"
+                  >
+                    {album.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </Form.Item>
 
         <Form.Item<SongOrderType>
