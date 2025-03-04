@@ -1,5 +1,5 @@
-import { poppins } from "../assets/fonts"
-import Footer from "../components/footer"
+import { poppins } from '../assets/fonts'
+import Footer from '../components/footer'
 import '../globals.css'
 import type { Metadata } from 'next'
 
@@ -7,20 +7,14 @@ export const metadata: Metadata = {
   title: 'Twiceworld Admin Page',
   description: 'Admin Page for adding or editing content in Twiceworld',
   icons: {
-    icon: "/favicon.png",
-  }
+    icon: '/favicon.png',
+  },
 }
 
-const AdminLayout = ({
-  children,
-}:{
-  children: React.ReactNode
-}) => {
-  return(
+const AdminLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
     <html lang="en" className={`${poppins.className}`}>
-      <body
-        className="bg-[url('/bg-1.png')] bg-cover bg-fixed overflow-x-hidden text-alternate-black"
-      >
+      <body className="bg-[url('/bg-1.png')] bg-cover bg-fixed overflow-x-hidden text-alternate-black">
         {children}
         <Footer />
       </body>
