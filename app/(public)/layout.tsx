@@ -7,7 +7,8 @@ import { ReactLenis } from '../lib/utils/lenis'
 
 export const metadata: Metadata = {
   title: 'Twiceworld',
-  description: 'Everything about the best K-Pop Girl Group TWICE!',
+  description:
+    'Explore Twiceworld – the ultimate fan hub for TWICE! TWICE is a K-Pop girl group composed of 9 members: NAYEON, JEONGYEON, MOMO, SANA, JIHYO, MINA, DAHYUN, CHAEYOUNG, and TZUYU.',
   icons: {
     icon: '/favicon.png',
   },
