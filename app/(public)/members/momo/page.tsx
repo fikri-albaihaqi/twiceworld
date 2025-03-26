@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Page() {
   return (
     <main className="relative h-[1000px] md:min-h-screen lg:h-[900px] flex justify-center overflow-hidden">
-      <Image src="/momo-bg.png" alt="Momo background image" fill={true} 
+      <Image src="/momo-bg.webp" alt="Momo background image" fill={true} 
         className="object-cover -z-10"
       />
       <div className="flex flex-col items-center mt-32 md:mt-72 lg:mt-56">

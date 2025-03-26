@@ -31,7 +31,7 @@ export default function Page() {
     <main className="flex flex-col overflow-hidden">
       <header className="relative -z-10 h-[560px] md:h-[440px] lg:h-[640px] xl:h-[900px] 2xl:h-[1280px]">
         <Image
-          src="/history-header.png"
+          src="/history-header.webp"
           alt="Twice Ready To Be Concert in Las Vegas"
           fill={true}
           className="hidden md:block object-contain object-top"
