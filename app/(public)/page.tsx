@@ -86,12 +86,14 @@ export default function Page() {
           alt="Header Image with twice members in it"
           fill={true}
           className="hidden md:block -z-10 object-contain object-top"
+          loading='eager'
         />
         <Image
-          src="/header-mobile.png"
+          src="/header-mobile.webp"
           alt="Header Image with twice members in it"
           fill={true}
           className="absolute md:hidden -z-10 object-contain object-top"
+          loading='eager'
         />
       </header>
 
